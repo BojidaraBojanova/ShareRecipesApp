@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'CustomFont-Bold';
+    src: url('./assets/fonts/MontserratAlternates-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'CustomFont-MediumItalic';
+    src: url('./assets/fonts/MontserratAlternates-MediumItalic.ttf') format('truetype');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
