@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { HomeComponent } from './home/home.component';
 import { RecipesModule } from './recipes/recipes.module';
-import { CategoryComponent } from './recipes/category/category.component';
+import { UserModule } from './user/user.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CategoryComponent } from './recipes/category/category.component';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    RecipesModule
+    RecipesModule,
+    UserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
