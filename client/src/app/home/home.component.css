@@ -22,12 +22,15 @@ a{
     height: 30%;
     background-color: rgba(255, 255, 255, 0.2); 
     backdrop-filter: blur(12px);
-    color: black;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'CustomFont-Bold';
     font-size: 2rem;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
 }
 
 .theLastRecipes{
@@ -44,7 +47,6 @@ a{
     margin: 1rem;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     border-radius: 2rem;
-    transition: transform 0.3s ease;
 }
 
 .recipeCard:hover{
