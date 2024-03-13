@@ -66,14 +66,23 @@
     height: 15%;
     font-size: 1.5rem;
     color: white;
-    background-color: #388E3C;
     border: none;
     border-radius: 1rem;
-    cursor: pointer;
     font-family: 'CustomFont-Bold';
 }
 
-.loginBtn:hover{
+.invalid-button{
+    background-color: gray;
+    cursor:default;
+}
+
+.valid-button{
+    background-color: #388E3C;
+    cursor: pointer;
+
+}
+
+.valid-button:hover{
     background-color: #8BC34A;
 }
 

@@ -21,7 +21,9 @@
                     <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
                     <p class="error" *ngIf="form.get('password')?.errors?.['appPasswordValidator']">Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit and one special character!</p>
                 </ng-container>
-                <button type="submit" class="loginBtn">Login</button>
+                <button type="submit" class="loginBtn" 
+                [ngClass]="{'invalid-button': form.invalid , 'valid-button' : !form.invalid}"
+                >Login</button>
             </form>
         </div>
        
