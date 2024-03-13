@@ -77,3 +77,11 @@
     background-color: #8BC34A;
 }
 
+.error{
+    color: red;
+    font-family: 'CustomFont-MediumItalic';
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+

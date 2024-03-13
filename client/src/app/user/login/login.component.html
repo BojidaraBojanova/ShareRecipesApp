@@ -4,11 +4,23 @@
     </div>
     <div class="loginForm">
         <div class="loginFormWrapper">
-            <form action="" class="logForm">
+            <form class="logForm" [formGroup]="form" (ngSubmit)="login()">
                 <label for="email">Email:</label>
-                <input type="text">
+                <input type="text" formControlName="email">
+
+                <ng-container *ngIf="form.get('email')?.touched">
+                    <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                    <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">Email is not valid!</p>
+                </ng-container>
+
+
                 <label for="password">Password:</label>
-                <input type="password">
+                <input type="password" formControlName="password">
+
+                <ng-container *ngIf="form.get('password')?.touched">
+                    <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+                    <p class="error" *ngIf="form.get('password')?.errors?.['appPasswordValidator']">Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit and one special character!</p>
+                </ng-container>
                 <button type="submit" class="loginBtn">Login</button>
             </form>
         </div>
