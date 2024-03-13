@@ -66,14 +66,31 @@
     height: 10%;
     font-size: 1.5rem;
     color: white;
-    background-color: #388E3C;
     border: none;
     border-radius: 1rem;
-    cursor: pointer;
     font-family: 'CustomFont-Bold';
 }
 
-.registerBtn:hover{
+
+.invalid-button{
+    background-color: gray;
+    cursor:default;
+}
+
+.valid-button{
+    background-color: #388E3C;
+    cursor: pointer;
+
+}
+
+.valid-button:hover{
     background-color: #8BC34A;
 }
 
+.error{
+    color: red;
+    font-family: 'CustomFont-MediumItalic';
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
