@@ -21,6 +21,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .logo-img{
@@ -29,8 +30,10 @@ header{
 }
 
 .logo-text{
-    width: 70%;
+    width: 80%;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .logo-img img{
@@ -78,3 +81,15 @@ header{
     color: #8BC34A;
 }
 
+
+@media (max-width: 1300px){
+    .logo{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 1000px){
+    .logo{
+        font-size: 1rem;
+    }
+}

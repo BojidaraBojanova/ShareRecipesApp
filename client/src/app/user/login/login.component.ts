@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { appEmailValidator } from 'src/app/shared/validators/emailVaidator/app-email-validator';
 import { appPasswordValidator } from 'src/app/shared/validators/passwordValidator/app-password-validator';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,14 +17,19 @@ export class LoginComponent {
     password: ['', [Validators.required, appPasswordValidator()]]
   })
   
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router){}
 
   login(): void{
     if(this.form.invalid){
       return;
     }
 
-    console.log(this.form.value);
+    const { email, password } = this.form.value;
+
+
+    this.userService.login(email!, password!).subscribe(()=>{
+      this.router.navigate(['/']);
+    })
   }
 
 }

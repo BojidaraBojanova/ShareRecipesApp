@@ -15,7 +15,7 @@
         </div>
 
         <div class="navbar">
-            <ul>
+            <ul *ngIf="!isLoggedIn">
                 <li>
                     <a routerLink="/">Home</a>
                 </li>
@@ -23,27 +23,27 @@
                     <a routerLink="/category">Recipes</a>
                 </li>
                 <li>
-                    <a routerLink="/login">Login</a>
+                    <a routerLink="/users/login">Login</a>
                 </li>
                 <li>
-                    <a routerLink="/register">Register</a>
+                    <a routerLink="/users/register">Register</a>
                 </li>
             </ul>
 
-            <!-- <ul>
+            <ul *ngIf="isLoggedIn">
                 <li>
-                    <a href="">Home</a>
+                    <a routerLink="/">Home</a>
                 </li>
                 <li>
-                    <a href="">Recipes</a>
+                    <a routerLink="/category">Recipes</a>
                 </li>
                 <li>
-                    <a href="">Profile</a>
+                    <a routerLink="/users/profile">Profile</a>
                 </li>
-                <li>
-                    <a href="">Logout</a>
+                <li style="cursor: pointer;" (click)="logout()">
+                    <a>Logout</a>
                 </li>
-            </ul> -->
+            </ul>
 
         </div>
     </div>
