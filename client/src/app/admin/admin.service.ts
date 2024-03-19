@@ -31,4 +31,16 @@ export class AdminService {
 
     return result;
   }
+
+
+  getAdmin(): Admin | null {
+    const adminString = sessionStorage.getItem(this.ADMIN_KEY);
+    return adminString ? JSON.parse(adminString) : null;
+  }
+
+  isLogged(): boolean{
+    console.log(this.getAdmin() !== null);
+    return this.getAdmin() !== null;
+  }
+
 }

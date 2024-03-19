@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginComponent } from './login/admin-login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminAuthGuard } from './guards/adminAuth.guard';
 
 const routes: Routes = [
   {
@@ -10,7 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'admin/home',
-    component: AdminHomeComponent
+    component: AdminHomeComponent,
+    canActivate: [AdminAuthGuard]
   }
 ]
 
