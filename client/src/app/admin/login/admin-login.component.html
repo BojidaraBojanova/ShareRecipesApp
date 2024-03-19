@@ -1,0 +1,45 @@
+<section class="admin-login-wrapper">
+    <div class="logo-wrap">
+        <div class="logo-img">
+            <a><img src="../../../assets/images/logo3.png" alt=""></a>
+        </div>
+        <div class="logo-text">
+            <p class="logo">
+                <a class="logo">
+                    Share Food
+                </a>
+            </p>
+        </div>
+    </div>
+    
+    <div class="admin-login-form">
+        <div class="title">
+            <h1>Admin Login</h1>
+        </div>
+        <div class="adminFormWrapper">
+            <!-- [formGroup]="form" (ngSubmit)="login()" -->
+            <form class="adminForm" [formGroup]="form" (ngSubmit)="login()">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" formControlName="username">
+
+                <ng-container *ngIf="form.get('username')?.touched">
+                    <p class="error" *ngIf="form.get('username')?.errors?.['required']">Username is required!</p>
+                </ng-container>
+
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" formControlName="password">
+
+                <ng-container *ngIf="form.get('password')?.touched">
+                    <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
+                    <p class="error" *ngIf="form.get('password')?.errors?.['appPasswordValidator']">Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit and one special character!</p>
+                </ng-container>
+
+                <button type="submit" class="loginBtn"
+                [ngClass]="{'invalid-button': form.invalid, 'valid-button': !form.invalid}"
+                >Login</button>
+            </form>
+        </div>
+       
+    </div>
+</section>

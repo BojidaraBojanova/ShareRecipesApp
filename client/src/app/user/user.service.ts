@@ -26,8 +26,8 @@ export class UserService implements OnDestroy{
   }
 
   login( email: string, password: string){
-    const result = this.http.post<User>('http://localhost:3000/users/login', { email, password,}).pipe(
-      tap((user) => {
+    const result = this.http.post<User>('http://localhost:3000/users/login', { email, password})
+    .pipe(tap((user) => {
 
         sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
 
