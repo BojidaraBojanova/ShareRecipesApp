@@ -18,12 +18,14 @@ exports.login = async(adminData) => {
 
     const accessToken = jwt.sign({
         _id: admin._id,
-        email: admin.email
+        email: admin.email,
+        username: admin.username
     }, 'ADDSECRETKEY')
 
     return{
         _id: admin._id,
         email: admin.email,
+        username: admin.username,
         accessToken
     }
 }
