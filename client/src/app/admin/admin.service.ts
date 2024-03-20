@@ -39,7 +39,6 @@ export class AdminService {
   }
 
   isLogged(): boolean{
-    console.log(this.getAdmin() !== null);
     return this.getAdmin() !== null;
   }
 

@@ -6,7 +6,7 @@ import { Observable} from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
-export class AdminAuthGuard implements CanActivate{
+export class AdminLoginGuard implements CanActivate{
     
     constructor(private adminService: AdminService, private router: Router){}
 
@@ -19,14 +19,5 @@ export class AdminAuthGuard implements CanActivate{
         }
     }
 
-    // canActivate(): boolean {
-    //     if(this.adminService.isLogged()){
-    //         this.router.navigate(['/admin/home']);
-    //         return true;
-    //     }else{
-    //         this.router.navigate(['/admin/login']);
-    //         return false;
-    //     }        
-    // }
 
 }
