@@ -32,6 +32,15 @@ export class AdminService {
     return result;
   }
 
+  logout(){
+    const result = this.http.get<Admin>('http://localhost:3000/admin/logout', {}).pipe(
+      tap(() => {
+        sessionStorage.removeItem(this.ADMIN_KEY);
+      })
+    )
+    return result;
+  }
+
 
   getAdmin(): Admin | null {
     const adminString = sessionStorage.getItem(this.ADMIN_KEY);

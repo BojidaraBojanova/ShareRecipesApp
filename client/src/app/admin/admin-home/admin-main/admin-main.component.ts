@@ -15,7 +15,6 @@ export class AdminMainComponent implements OnInit{
   ngOnInit(): void {
       const admin = this.adminService.getAdmin();
       this.name = admin ? admin.username : '';
-      console.log(admin);
   }
 
   
