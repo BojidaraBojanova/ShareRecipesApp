@@ -6,6 +6,7 @@ import { AdminLoginComponent } from "./login/admin-login.component";
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminNavbarComponent } from './admin-home/admin-navbar/admin-navbar.component';
 import { AdminMainComponent } from './admin-home/admin-main/admin-main.component';
+import { AdminAddCategoryComponent } from './admin-home/admin-add-category/admin-add-category.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AdminMainComponent } from './admin-home/admin-main/admin-main.component
         AdminHomeComponent,
         AdminNavbarComponent,
         AdminMainComponent,
+        AdminAddCategoryComponent,
     ],
     imports:[
         CommonModule,
