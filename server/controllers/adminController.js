@@ -23,9 +23,32 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.get('/logout', async(req, res) => {
+router.get('/logout', async (req, res) => {
     res.json({ok: true});
 });
 
+router.post('/categories', async (req, res) => {
+    try {
+        
+        const { categoryName, image } = req.body;
+
+        const createdCategory = await adminService.create({ categoryName, image });
+
+        res.status(201).json(createdCategory);
+    } catch (error) {
+        console.log('Error', error);
+        res.status(500).json({ message: 'Error creating category'})
+    }
+})
+
+router.get('/categories', async (req, res) => {
+    try {
+        const categories = await adminService.getAllCategories().lean();
+
+        res.json(categories);        
+    } catch (error) {
+        console.error('Error in getting the categories', error);
+    }
+})
 
 module.exports = router;

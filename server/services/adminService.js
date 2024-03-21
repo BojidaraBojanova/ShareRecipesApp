@@ -2,6 +2,7 @@ const Admin = require("../models/Admin");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { SECRET_KEY } = require('../config');
+const Category = require("../models/Category");
 
 
 exports.login = async(adminData) => {
@@ -29,4 +30,16 @@ exports.login = async(adminData) => {
         username: admin.username,
         accessToken
     }
+};
+
+exports.create = async(categoryData) => {
+    const createdCategory = await Category.create({
+        ...categoryData
+    });
+
+    console.log(createdCategory)
+
+    return createdCategory;
 }
+
+exports.getAllCategories = () => Category.find();
