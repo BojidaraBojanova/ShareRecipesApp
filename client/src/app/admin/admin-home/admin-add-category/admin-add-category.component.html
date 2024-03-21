@@ -6,11 +6,11 @@
                 <h2>Add Category</h2>
             </div>
             <div class="form-wrapper">
-                <form>
+                <form [formGroup]="form" (ngSubmit)="createCategory()">
                     <label for="categoryName">Category Name:</label>
-                    <input type="text" name="categoryName" id="categoryName">
+                    <input type="text" name="categoryName" id="categoryName" formControlName="categoryName">
                     <label for="image">Image:</label>
-                    <input type="text" name="image" id="image">
+                    <input type="text" name="image" id="image" formControlName="image">
                     <div class="btn-wrapper">
                         <button type="submit">Add Category</button>
                     </div>
@@ -29,12 +29,12 @@
                             <td>Delete</td>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Lunch</td>
+                    <tbody *ngIf="categories.length > 0; else noCategories">
+                        <tr *ngFor="let category of categories">
+                            <td>{{ category.categoryName }}</td>
                             <td class="img-td">
                                 <div class="img-wrapper">
-                                    <img src="../../../../assets/images/homeBackground2.jpg" alt="">
+                                    <img src={{category.image}} alt="">
                                 </div>
                             </td>
                             <td>
@@ -51,6 +51,10 @@
                     </tbody>
                    
                 </table>
+
+                <ng-template #noCategories>
+                    <p>No categories available.</p>
+                </ng-template>
             </div>
         </div>
 

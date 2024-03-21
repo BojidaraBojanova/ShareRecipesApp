@@ -2,44 +2,23 @@
     <div class="title">
         <h1>Categories</h1>
     </div>
-    <div class="cardWrapper">
-        <a href="">
+    <div class="cardWrapper" *ngIf="categories.length > 0; else noCategories">
+        <a href="" *ngFor="let category of categories">
             <div class="categoryCard">
                 <div class="categoryCard-img">
-                    <img src="../../assets/images/homeBackground3.jpg" alt="">
+                    <img src={{category.image}} alt="">
                 </div>
                 <div class="categoryCard-title">
-                    <h2>Salad</h2>
+                    <h2>{{ category.categoryName }}</h2>
                 </div>
         
             </div>
         </a>
     
-        <a href="">
-            <div class="categoryCard">
-                <div class="categoryCard-img">
-                    <img src="../../assets/images/homeBackground3.jpg" alt="">
-                </div>
-                <div class="categoryCard-title">
-                    <h2>Salad</h2>
-                </div>
-        
-            </div>
-        </a>
-    
-        <a href="">
-            <div class="categoryCard">
-                <div class="categoryCard-img">
-                    <img src="../../assets/images/homeBackground3.jpg" alt="">
-                </div>
-                <div class="categoryCard-title">
-                    <h2>Salad</h2>
-                </div>
-        
-            </div>
-        </a>
     </div>
     
-    
+    <ng-template #noCategories>
+        <p>No categories available.</p>
+    </ng-template>
 
 </section>
