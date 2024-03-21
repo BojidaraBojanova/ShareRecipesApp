@@ -1,6 +1,62 @@
 <div class="admin-wrapper">
     <app-admin-navbar />
-    <p>admin-add-category works!</p>
+    <div class="addCategory-wrapper">
+        <div class="form-container-wrapper">
+            <div class="form-title">
+                <h2>Add Category</h2>
+            </div>
+            <div class="form-wrapper">
+                <form>
+                    <label for="categoryName">Category Name:</label>
+                    <input type="text" name="categoryName" id="categoryName">
+                    <label for="image">Image:</label>
+                    <input type="text" name="image" id="image">
+                    <div class="btn-wrapper">
+                        <button type="submit">Add Category</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="categoryTable-container-wrapper">
+            <div class="categoryTable-wrapper">
+                <table>
+                    <thead>
+                        <tr class="">
+                            <td>Category Name</td>
+                            <td>Image</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lunch</td>
+                            <td class="img-td">
+                                <div class="img-wrapper">
+                                    <img src="../../../../assets/images/homeBackground2.jpg" alt="">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="table-btn green">
+                                    <img src="../../../../assets/icons/edit-solid.svg" alt="">
+                                </button>
+                            </td>
+                            <td>
+                                <button class="table-btn red">
+                                    <img src="../../../../assets/icons/delete-solid.svg" alt="">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                   
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    
 </div>
 
 
