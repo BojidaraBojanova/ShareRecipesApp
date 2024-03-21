@@ -1,6 +1,7 @@
 const Admin = require("../models/Admin");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { SECRET_KEY } = require('../config');
 
 
 exports.login = async(adminData) => {
@@ -20,7 +21,7 @@ exports.login = async(adminData) => {
         _id: admin._id,
         email: admin.email,
         username: admin.username
-    }, 'ADDSECRETKEY')
+    }, SECRET_KEY)
 
     return{
         _id: admin._id,
