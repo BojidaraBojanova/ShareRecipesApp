@@ -43,3 +43,7 @@ exports.create = async(categoryData) => {
 }
 
 exports.getAllCategories = () => Category.find();
+
+exports.editCategory = (categoryId, categoryData) => Category.findByIdAndUpdate(categoryId, categoryData, { runValidators: true });
+
+exports.deleteCategory = (categoryId) => Category.findByIdAndDelete(categoryId);

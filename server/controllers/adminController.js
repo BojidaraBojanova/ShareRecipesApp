@@ -51,4 +51,28 @@ router.get('/categories', async (req, res) => {
     }
 })
 
+router.put('/editCategory/:categoryId', async(req, res) => {
+    const categoryData = req.body;
+    const categoryId = req.params.categoryId;
+
+    try {
+        console.log(categoryData);
+        const editedCategory = await adminService.editCategory(categoryId, categoryData);
+
+        res.status(201).json(editedCategory);
+
+    } catch (error) {
+        console.log('Error', error);
+        res.status(500).json({ message: 'Error editing category'})
+    }
+})
+
+router.delete('/deleteCategory/:categoryId', async(req, res) => {
+    const categoryId = req.params.categoryId;
+    const deletedCategory = await adminService.deleteCategory(categoryId);
+
+    res.status(201).json(deletedCategory);
+
+})
+
 module.exports = router;
