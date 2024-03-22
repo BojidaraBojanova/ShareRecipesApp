@@ -9,8 +9,14 @@
                 <form [formGroup]="form" (ngSubmit)="createCategory()">
                     <label for="categoryName">Category Name:</label>
                     <input type="text" name="categoryName" id="categoryName" formControlName="categoryName">
+                    <ng-container *ngIf="form.get('categoryName')?.touched">
+                        <p class="error" *ngIf="form.get('categoryName')?.errors?.['required']">Category Name is required!</p>
+                    </ng-container>
                     <label for="image">Image:</label>
                     <input type="text" name="image" id="image" formControlName="image">
+                    <ng-container *ngIf="form.get('image')?.touched">
+                        <p class="error" *ngIf="form.get('image')?.errors?.['required']">Image is required!</p>
+                    </ng-container>
                     <div class="btn-wrapper">
                         <button type="submit">Add Category</button>
                     </div>
@@ -38,9 +44,9 @@
                                 </div>
                             </td>
                             <td>
-                                <button class="table-btn green">
+                                <a class="table-edit-btn green">
                                     <img src="../../../../assets/icons/edit-solid.svg" alt="">
-                                </button>
+                                </a>
                             </td>
                             <td>
                                 <button class="table-btn red">
