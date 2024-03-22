@@ -3,10 +3,10 @@
     <div class="addCategory-wrapper">
         <div class="form-container-wrapper">
             <div class="form-title">
-                <h2>Add Category</h2>
+                <h2>{{isEditMode ? 'Edit' : 'Add'}} Category</h2>
             </div>
             <div class="form-wrapper">
-                <form [formGroup]="form" (ngSubmit)="createCategory()">
+                <form [formGroup]="form" (ngSubmit)="addOrEditCategory()">
                     <label for="categoryName">Category Name:</label>
                     <input type="text" name="categoryName" id="categoryName" formControlName="categoryName">
                     <ng-container *ngIf="form.get('categoryName')?.touched">
@@ -18,7 +18,7 @@
                         <p class="error" *ngIf="form.get('image')?.errors?.['required']">Image is required!</p>
                     </ng-container>
                     <div class="btn-wrapper">
-                        <button type="submit">Add Category</button>
+                        <button type="submit">{{ isEditMode ? 'Edit' : 'Add'}} Category</button>
                     </div>
                 </form>
             </div>
@@ -44,12 +44,15 @@
                                 </div>
                             </td>
                             <td>
-                                <a class="table-edit-btn green">
+                                <button class="table-btn green" (click)="editCategory(category)">
                                     <img src="../../../../assets/icons/edit-solid.svg" alt="">
-                                </a>
+                                </button>
+                                <!-- <a routerLink="/admin/editCategory" class="table-edit-btn green">
+                                    <img src="../../../../assets/icons/edit-solid.svg" alt="">
+                                </a> -->
                             </td>
                             <td>
-                                <button class="table-btn red">
+                                <button class="table-btn red" (click)="deleteCategory(category._id)">
                                     <img src="../../../../assets/icons/delete-solid.svg" alt="">
                                 </button>
                             </td>

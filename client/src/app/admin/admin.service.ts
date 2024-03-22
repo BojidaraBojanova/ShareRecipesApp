@@ -33,12 +33,19 @@ export class AdminService {
     return result;
   }
 
-  createCategory( categoryName: string, image: string){
+  createCategory( categoryName: string, image: string ){
     const result = this.http.post<Category>('http://localhost:3000/admin/categories', {categoryName, image})
     .pipe(tap((category: Category) => {
       console.log('Category is created', category);
     }))
-    console.log(result);
+    return result;
+  }
+
+  editCategory( categoryId: string, categoryName: string, image: string ){
+    const result = this.http.put<Category>('http://localhost:3000/admin/editCategory/'+ categoryId, {categoryName, image})
+    .pipe(tap((category: Category) => {
+      console.log('Category is edited', category);
+    }));
     return result;
   }
 
@@ -47,6 +54,15 @@ export class AdminService {
     .pipe(tap((category: Category[]) => {
         console.log('Categories is get', category)
       }))
+    return result;
+  }
+
+  deleteCategory( categoryId: string ){
+    const result = this.http.delete<Category>('http://localhost:3000/admin/deleteCategory/'+categoryId,{})
+    .pipe(tap((category: Category) => {
+      console.log('Category is deleted', category);
+    }))
+
     return result;
   }
 

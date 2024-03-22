@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminAddCategoryComponent } from './admin-add-category.component';
+import { AdminAddEditCategoryComponent } from './admin-add-edit-category.component';
 
 describe('AdminAddCategoryComponent', () => {
-  let component: AdminAddCategoryComponent;
-  let fixture: ComponentFixture<AdminAddCategoryComponent>;
+  let component: AdminAddEditCategoryComponent;
+  let fixture: ComponentFixture<AdminAddEditCategoryComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminAddCategoryComponent]
+      declarations: [AdminAddEditCategoryComponent]
     });
-    fixture = TestBed.createComponent(AdminAddCategoryComponent);
+    fixture = TestBed.createComponent(AdminAddEditCategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
