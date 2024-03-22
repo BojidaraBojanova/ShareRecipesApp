@@ -15,12 +15,16 @@ exports.register = async(userData) =>{
 
     const accessToken = jwt.sign({
         _id: user._id,
-        email: user.email
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
     }, SECRET_KEY)
 
     return{
         _id: user._id,
         email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
         accessToken
     }
 };
@@ -40,12 +44,16 @@ exports.login = async(userData) => {
 
    const accessToken = jwt.sign({
     _id: user._id,
-    email: user.email
+    email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
     }, SECRET_KEY)
 
     return{
         _id: user._id,
         email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
         accessToken
     }
 
