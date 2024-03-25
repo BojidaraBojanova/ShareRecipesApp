@@ -2,6 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
+import { Recipe } from '../types/recipe';
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,15 @@ export class UserService implements OnDestroy{
       console.log('User is edited', user);
     }));
 
+    return result;
+  }
+
+  addRecipe(userId: string, title: string, description: string, ingredients: string, instructions: string, category: string, image: string){
+    const result = this.http.post<Recipe>('http://localhost:3000/users/addRecipe', {userId, title, description, ingredients, instructions, category, image}).pipe(
+      tap((recipe) => {
+        console.log(recipe);
+      })
+    )
     return result;
   }
 

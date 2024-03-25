@@ -1,1 +1,52 @@
-<p>add-recipe works!</p>
+<section class="add-recipe">
+    <div class="title">
+        <h1>Add Recipe</h1>
+    </div>
+    <div class="form-wrapper">
+        <div class="form-container">
+            <form [formGroup]="form" (ngSubmit)="addRecipe()">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" formControlName="title">
+
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" cols="30" rows="3" formControlName="description"></textarea>
+
+                <label for="ingredients">Ingredients:</label>
+                <textarea name="ingredients" id="ingredients" cols="30" rows="3" formControlName="ingredients"></textarea>
+
+                <!-- <div class="ingredient-container" formArrayName="ingredients">
+                    <label for="ingredients">Ingredients:</label>
+                    <div class="ingredient-input-btn">
+                        <div class="ingredient-input">
+                            <input type="text" name="ingredientName[]" id="ingredientName" placeholder="Sugar" formControlName="name">
+                            <input type="number" name="ingredientQuantity[]" id="ingredientQuantity" placeholder="150" formControlName="quantity">
+                            <input type="text" name="ingredientUnit[]" id="ingredientUnit" placeholder="gr" formControlName="unit">
+                        </div>
+                        <button type="button" class="addIngredientBtn" (click)="addIngredients()">+</button>
+                    </div>
+                    
+                </div> -->
+                
+                <label for="instructions">Instructions:</label>
+                <textarea name="instructions" id="instructions" cols="30" rows="3" formControlName="instructions"></textarea>
+                
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select name="category" id="category" formControlName="category">
+                        <option value="" disabled selected>Select a category</option>
+                        <option *ngFor="let category of categories" [value]="category._id">{{category.categoryName}}</option>
+                    </select>
+                    <div *ngIf="form.get('category')?.invalid && form.get('category')?.touched" class="error-msg">Please select a category</div>
+                </div>
+
+                <label for="image">Image</label>
+                <input type="text" name="image" id="image" formControlName="image">
+
+                <div class="submitBtn-wrapper">
+                    <button type="submit" class="addRecipeBtn">Add Recipe</button>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+</section>

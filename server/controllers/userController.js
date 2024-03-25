@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const userService = require('../services/userService');
+const recipeService = require('../services/recipeService');
 
 router.post('/register', async(req, res) => {
     
@@ -47,5 +48,18 @@ router.put('/profile/edit/:userId', async(req, res) => {
     }
 })
 
+router.post('/addRecipe', async(req, res) => {
+    const recipeData = req.body;
+    const userId = req.body.userId;
+    
+    try {
+        const result = await recipeService.create(userId, recipeData);
+        res.status(201).json(result);
+
+    } catch (error) {
+        console.log('Error', error);
+        res.status(500).json({ message: 'Error adding recipe'});
+    }
+})
 
 module.exports = router;
