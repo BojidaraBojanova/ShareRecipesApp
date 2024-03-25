@@ -14,16 +14,18 @@
     align-items: center;
 }
 
-.edit-img{
+.edit-btn{
     width: 3%;
-    height: 40%;
+    height: 20%;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     cursor: pointer;
+    background: none;
+    border: none;
 }
 
-.edit-img img{
+.edit-btn img{
     width: 60%;
     height: 80%;
 }
@@ -73,4 +75,12 @@
 .container-list li a{
     text-decoration: none;
     color: #8BC34A;
+}
+
+.popup-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
 }

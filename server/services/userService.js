@@ -3,12 +3,17 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { SECRET_KEY } = require('../config');
 
+exports.getOne = (userId) => User.findById(userId);
 
 
 exports.register = async(userData) =>{
 
     if(userData.password !== userData.rePassword){
         throw new Error('Password mismatch!');
+    }
+
+    if(userData.password){
+        userData.password = await bcrypt.hash(userData.password, 10);
     }
 
     const user = await User.create(userData);
@@ -31,10 +36,11 @@ exports.register = async(userData) =>{
 
 exports.login = async(userData) => {
    const user = await User.findOne({ email: userData.email });
-
+   
    if(!user){
         throw new Error('No such user is registered!');
    }
+
 
    const isValid = await bcrypt.compare(userData.password, user.password);
 
@@ -58,3 +64,15 @@ exports.login = async(userData) => {
     }
 
 };
+
+
+exports.editUser = async (userId, userData) => {
+    if(userData.password){
+        userData.password = await bcrypt.hash(userData.password, 10);
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(userId, userData, {runValidators: true})
+
+    return updatedUser;
+};
+

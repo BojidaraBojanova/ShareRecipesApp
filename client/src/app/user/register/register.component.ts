@@ -25,6 +25,10 @@ export class RegisterComponent {
     })
   });
 
+  get passGroup(){
+    return this.form.get('passGroup');
+  }
+
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router){}
 
   register(): void{

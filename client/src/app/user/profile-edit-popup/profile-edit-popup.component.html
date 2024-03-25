@@ -1,0 +1,63 @@
+<div class="popup-wrapper">
+    <div class="popup-container">
+        <div class="title-closeBtn-wrapper">
+            <div class="title"><h2>Edit user</h2></div>
+            <div class="closeBtn">
+                <button (click)="closePopup()">x</button>
+            </div>
+        </div>
+        <div class="form-wrapper">
+            <form [formGroup]="form" (ngSubmit)="edit()">
+                <label for="firstName">First Name:</label>
+                <input type="text" name="firstName" id="firstName" formControlName="firstName">
+
+                <ng-container *ngIf="form.get('firstName')?.touched">
+                    <p class="error" *ngIf="form.get('firstName')?.errors?.['required']">First Name is required!</p>
+                    <p class="error" *ngIf="form.get('firstName')?.errors?.['minlength']">First Name must be at least {{form.get('firstName')?.errors?.['minlength']?.['requiredLength']}} characters!</p>
+                </ng-container>
+
+                <label for="lastName">Last Name:</label>
+                <input type="text" name="lastName" id="lastName" formControlName="lastName">
+
+                <ng-container *ngIf="form.get('lastName')?.touched">
+                    <p class="error" *ngIf="form.get('lastName')?.errors?.['required']">Last Name is required!</p>
+                    <p class="error" *ngIf="form.get('lastName')?.errors?.['minlength']">Last Name must be at least {{form.get('lastName')?.errors?.['minlength']?.['requiredLength']}} characters!</p>
+                </ng-container>
+
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" formControlName="email">
+
+                <ng-container *ngIf="form.get('email')?.touched">
+                    <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
+                    <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">Email is not valid!</p>
+                </ng-container>
+
+                <ng-container formGroupName="passGroup">
+
+                    <label for="password">New Password:</label>
+                    <input type="password" name="password" id="password" formControlName="password">
+
+                    <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+                        <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']">Password is required!</p>
+                        <p class="error" *ngIf="form.get('passGroup')?.get('password')?.errors?.['appPasswordValidator']">Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one digit and one special character!</p>
+                    </ng-container>
+
+                    <label for="rePassword">Repeat the password:</label>
+                    <input type="password" name="rePassword" id="rePassword" formControlName="rePassword">     
+
+                    <ng-container *ngIf="form.get('passGroup')?.get('rePassword')?.touched">
+                        <p class="error" *ngIf="
+                        form.get('passGroup')?.errors?.['matchPasswordsValidator'] ||
+                        form.get('passGroup')?.get('rePassword')?.errors?.['required']">Repeat Password does not match password!</p>
+                    </ng-container>
+
+                </ng-container>       
+
+                <div class="btn-wrapper">
+                    <button type="submit" class="edit-btn" [ngClass]="{'invalid-button': form.invalid , 'valid-button' : !form.invalid}">Edit</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>

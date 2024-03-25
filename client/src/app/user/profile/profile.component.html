@@ -1,9 +1,10 @@
 <section class="profile-wrapper">
     <div class="title">
-        <h1>Welcome {{firstName}} {{lastName}}</h1>
-        <div class="edit-img">
+        <h1>Welcome {{profileDetails.firstName}} {{profileDetails.lastName}}</h1> 
+        <button class="edit-btn" (click)="showPopup()"><img src="../../../assets/icons/edit-solid-green.svg" alt=""></button>
+        <!-- <div class="edit-img">
             <a href=""><img src="../../../assets/icons/edit-solid-green.svg" alt=""></a>
-        </div>
+        </div> -->
     </div>
     <div class="tables-wrapper">
         <div class="container">
@@ -27,5 +28,9 @@
                 </ol>
             </div>
         </div>
+    </div>
+
+    <div *ngIf="isPopupVisible" class="popup-container">
+        <app-profile-edit-popup (close)="hidePopup()"/>
     </div>
 </section>

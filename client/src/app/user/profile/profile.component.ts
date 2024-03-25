@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { ProfileDetails, User } from 'src/app/types/user';
 
 @Component({
   selector: 'app-profile',
@@ -8,15 +9,52 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent implements OnInit{
 
-  firstName: string = '';
-  lastName: string = '';
+  profileDetails: ProfileDetails = {
+    firstName: '',
+    lastName: '',
+    email: ''
+  };
+
+  isPopupVisible: boolean = false;
   
   constructor(private userService: UserService){}
 
   ngOnInit(): void {
-      const user = this.userService.getUser();
-      this.firstName = user ? user.firstName : '';
-      this.lastName = user ? user.lastName : '';
       
+    this.userService.user$.subscribe(user => {
+      console.log(user)
+      if(user){
+       this.showProfileDetails(user);
+      }else{
+        const storedUser = this.userService.getUser();
+
+        if(storedUser){
+          this.showProfileDetails(storedUser);
+        }else{
+          this.profileDetails = {
+            firstName: '',
+            lastName: '',
+            email: ''
+          }
+        }
+      }
+    })  
+  }
+ 
+  showProfileDetails(user: User):void{
+    const{ firstName, lastName, email } = user;
+    this.profileDetails = {
+      firstName, 
+      lastName,
+      email
+    }
+  }
+
+  showPopup(){
+    this.isPopupVisible = true;
+  }
+
+  hidePopup() {
+    this.isPopupVisible = false
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription, take, tap } from 'rxjs';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 
@@ -15,46 +15,53 @@ export class UserService implements OnDestroy{
   user: User | undefined;
   USER_KEY = '[user]';
 
- 
+  userSubscription: Subscription;
 
-  subscription: Subscription;
+  get isLogged():boolean {
+    return this.getUser() !== null;
+  }
 
   constructor(private http: HttpClient) { 
-    this.subscription = this.user$.subscribe(user => {
+    this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     })
   }
 
+
   login( email: string, password: string){
     const result = this.http.post<User>('http://localhost:3000/users/login', { email, password})
     .pipe(tap((user) => {
+      console.log('User:',user);
+      this.user$$.next(user);
+      sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    }));    
 
-        sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
-
-      }));    
-    
     return result;
   }
+
 
   register( firstName: string, lastName: string, email: string, password: string, rePassword: string){
     const result = this.http.post<User>('http://localhost:3000/users/register', { firstName, lastName, email, password, rePassword}).pipe(
       tap((user) => {
+        this.user$$.next(user)
         sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
       }));
- 
     
     return result;
   }
 
   logout(){
-    const result = this.http.get<User>('http://localhost:3000/users/logout', {}).pipe(
-      tap(() =>{ 
-
+    return this.http.get('http://localhost:3000/users/logout', {}).pipe(
+      tap(() => {
         sessionStorage.removeItem(this.USER_KEY);
-      
-      }));
-      
-      return result;
+        this.user$$.next(undefined);
+      }));      
+  }
+
+  getProfile(){
+    return this.http.get<User>('http://localhost:3000/users/profile').pipe(
+      tap((user) => this.user$$.next(user))
+    );
   }
 
   getUser(): User | null {
@@ -62,16 +69,18 @@ export class UserService implements OnDestroy{
     return userString ? JSON.parse(userString) : null;
   }
 
-  get isLogged(): boolean{
-    return this.getUser() !== null;
+  editUser(userId: string, firstName: string, lastName: string, email: string, password: string, rePassword: string){
+    sessionStorage.removeItem(this.USER_KEY);
+    const result = this.http.put<User>('http://localhost:3000/users/profile/edit/' + userId, {firstName, lastName, email, password, rePassword})
+    .pipe(tap((user: User) => {
+      sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
+      console.log('User is edited', user);
+    }));
+
+    return result;
   }
 
-
-  // getProfile() {
-  //   return this.http.get<User>('/profile').pipe(tap(user => this.user$$.next(this.user)))
-  // }
-
   ngOnDestroy(): void {
-      this.subscription.unsubscribe();
+      this.userSubscription.unsubscribe();
   }
 }
