@@ -71,7 +71,7 @@ exports.editUser = async (userId, userData) => {
         userData.password = await bcrypt.hash(userData.password, 10);
     }
 
-    const updatedUser = await User.findByIdAndUpdate(userId, userData, {runValidators: true})
+    const updatedUser = await User.findByIdAndUpdate(userId, userData, {new: true, runValidators: true})
 
     return updatedUser;
 };
