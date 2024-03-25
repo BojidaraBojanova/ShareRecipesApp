@@ -6,6 +6,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditPopupComponent } from './profile-edit-popup/profile-edit-popup.component';
+import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ProfileEditPopupComponent } from './profile-edit-popup/profile-edit-pop
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    ProfileEditPopupComponent
+    ProfileEditPopupComponent,
+    AddRecipeComponent
   ],
   imports: [
     CommonModule,

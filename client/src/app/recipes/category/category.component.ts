@@ -21,7 +21,6 @@ export class CategoryComponent implements OnInit{
     this.adminService.getAllCategories().subscribe(
       (data: Category[]) => {
         this.categories = data;
-        console.log(this.categories)
       }
     )
   }

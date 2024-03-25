@@ -22,7 +22,6 @@ export class ProfileComponent implements OnInit{
   ngOnInit(): void {
       
     this.userService.user$.subscribe(user => {
-      console.log(user)
       if(user){
        this.showProfileDetails(user);
       }else{

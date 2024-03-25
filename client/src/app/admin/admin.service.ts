@@ -44,7 +44,7 @@ export class AdminService {
   editCategory( categoryId: string, categoryName: string, image: string ){
     const result = this.http.put<Category>('http://localhost:3000/admin/editCategory/'+ categoryId, {categoryName, image})
     .pipe(tap((category: Category) => {
-      console.log('Category is edited', category);
+      console.log('Category is edited');
     }));
     return result;
   }
@@ -52,7 +52,7 @@ export class AdminService {
   getAllCategories(){
     const result = this.http.get<Category[]>('http://localhost:3000/admin/categories', {})
     .pipe(tap((category: Category[]) => {
-        console.log('Categories is get', category)
+        console.log('Categories is get')
       }))
     return result;
   }
@@ -60,7 +60,7 @@ export class AdminService {
   deleteCategory( categoryId: string ){
     const result = this.http.delete<Category>('http://localhost:3000/admin/deleteCategory/'+categoryId,{})
     .pipe(tap((category: Category) => {
-      console.log('Category is deleted', category);
+      console.log('Category is deleted');
     }))
 
     return result;
