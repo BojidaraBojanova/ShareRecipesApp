@@ -1,0 +1,21 @@
+<section class="recipes">
+    <div class="title">
+        <h1>Recipes</h1>
+    </div>
+    <div class="cardWrapper" *ngIf="recipes.length > 0; else noRecipes">
+        <a *ngFor="let recipe of recipes">
+            <div class="recipeCard">
+                <div class="recipeCard-img">
+                    <img src={{recipe.image}} alt="">
+                </div>
+                <div class="recipe-title">
+                    <h2>{{ recipe.title }}</h2>
+                </div>
+        
+            </div>
+        </a>
+    </div>
+    <ng-template #noRecipes>
+        <p>No recipes available.</p>
+    </ng-template>
+</section>

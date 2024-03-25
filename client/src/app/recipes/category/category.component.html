@@ -3,7 +3,7 @@
         <h1>Categories</h1>
     </div>
     <div class="cardWrapper" *ngIf="categories.length > 0; else noCategories">
-        <a href="" *ngFor="let category of categories">
+        <a [routerLink]="'/category/recipes/' + category?._id" *ngFor="let category of categories">
             <div class="categoryCard">
                 <div class="categoryCard-img">
                     <img src={{category.image}} alt="">
@@ -14,7 +14,6 @@
         
             </div>
         </a>
-    
     </div>
     
     <ng-template #noCategories>
