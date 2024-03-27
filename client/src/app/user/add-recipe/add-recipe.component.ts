@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/admin/admin.service';
 import { Category } from 'src/app/types/category';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-recipe',
@@ -23,7 +24,7 @@ export class AddRecipeComponent implements OnInit{
     image: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder, private adminService: AdminService, private userService: UserService){}
+  constructor(private fb: FormBuilder, private adminService: AdminService, private userService: UserService, private router: Router){}
 
   ngOnInit(): void {
       this.getUserId();
@@ -56,6 +57,7 @@ export class AddRecipeComponent implements OnInit{
     const {title, description, ingredients, instructions, category, image} = this.form.value;
 
     this.userService.addRecipe(this.userId, title!, description!, ingredients!, instructions!, category!, image!).subscribe(()=>{
+      this.router.navigate(['/category/recipes/' + category])
       console.log('Successful adding the recipe');
     })
   }
