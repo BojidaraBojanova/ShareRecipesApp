@@ -51,7 +51,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    padding: 1rem;
+    padding: 2rem 1rem 1rem 1rem;
 }
 
 .ingredients-wrapper{
@@ -60,6 +60,7 @@
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 1rem;
+    background-color: #F2F9F1;
 
 }
 
@@ -73,6 +74,7 @@ h3{
     height: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 1rem;
+    background-color: #F2F9F1;
     padding: 1rem;
 }
 
