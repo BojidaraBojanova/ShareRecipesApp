@@ -114,7 +114,7 @@ label{
     background-color: #8BC34A;
 }
 
-.error-msg{
+.error{
     color: red;
     font-family: 'CustomFont-MediumItalic';
     font-size: 0.8rem;
