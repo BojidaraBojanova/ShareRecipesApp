@@ -19,6 +19,7 @@ export class RecipesByCategoryComponent implements OnInit{
         if(categoryId){
           this.recipeService.getRecipesByCategory(categoryId).subscribe(recipes => {
             this.recipes = recipes;
+            console.log('recipes:', recipes)
           })
         }
         

@@ -1,4 +1,5 @@
 const Recipe = require('../models/Recipe');
+const recipeService = require('../services/recipeService');
 
 const router = require('express').Router();
 
@@ -9,6 +10,19 @@ router.get('/category/recipes/:categoryId', async(req, res) => {
         res.status(200).json(recipes);
     } catch (error) {
         console.error('Error fetching recipes by category', error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+})
+
+router.get('/category/recipe/details/:recipeId', async(req, res) => {
+    const recipeId = req.params.recipeId;
+    console.log(recipeId)
+    try {
+        const recipe = await recipeService.getOne(recipeId);
+        console.log(recipe);
+        res.status(200).json(recipe);
+    } catch (error) {
+        console.error('Error fetching recipe', error);
         res.status(500).json({ message: 'Server Error' });
     }
 })

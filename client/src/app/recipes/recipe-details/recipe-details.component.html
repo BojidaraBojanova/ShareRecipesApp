@@ -1,0 +1,30 @@
+<section class="recipeDetails" *ngIf="recipe">
+    <div class="img-title-description-wrapper">
+        <div class="img-wrapper">
+            <img src="{{recipe.image}}" alt="">
+        </div>
+        <div class="title-description-wrapper">
+            <h2>{{recipe.title}}</h2>
+            <p>{{recipe.description}}</p>
+        </div>
+    </div>
+
+    <div class="ingredients-instruction-wrapper">
+        <div class="ingredients-wrapper">
+            <h3>Ingredients:</h3>
+            <ul>
+                <li *ngFor="let ingredient of recipe.ingredients.split('\n')">{{ingredient}}</li>
+            </ul>
+        </div>
+
+        <div class="instruction-wrapper">
+            <h3>Instructions:</h3>
+            <ul>
+                <li *ngFor="let instruction of recipe.instructions.split('\n')">{{instruction}}</li>
+            </ul>
+        </div>
+        
+    </div>
+
+   
+</section>

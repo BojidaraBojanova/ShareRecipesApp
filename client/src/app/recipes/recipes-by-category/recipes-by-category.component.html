@@ -3,17 +3,18 @@
         <h1>Recipes</h1>
     </div>
     <div class="cardWrapper" *ngIf="recipes.length > 0; else noRecipes">
-        <a *ngFor="let recipe of recipes">
-            <div class="recipeCard">
-                <div class="recipeCard-img">
-                    <img src={{recipe.image}} alt="">
-                </div>
-                <div class="recipe-title">
-                    <h2>{{ recipe.title }}</h2>
-                </div>
+        
+            <div class="recipeCard" *ngFor="let recipe of recipes">
+                <a [routerLink]="'/category/recipe/details/'+recipe?._id">
+                    <div class="recipeCard-img">
+                        <img src={{recipe.image}} alt="">
+                    </div>
+                    <div class="recipe-title">
+                        <h2>{{ recipe.title }}</h2>
+                    </div>
+                </a>
         
             </div>
-        </a>
     </div>
     <ng-template #noRecipes>
         <p>No recipes available.</p>
