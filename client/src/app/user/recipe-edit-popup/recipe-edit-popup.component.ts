@@ -66,7 +66,17 @@ export class RecipeEditPopupComponent implements OnInit{
   }
   
 
-  edit(){}
+  edit(){
+    if(this.form.invalid){
+      return;
+    }
+
+    const {title, description, ingredients, instructions, category, image} = this.form.value;
+    this.recipeService.editRecipe(this.recipeId, title!, description!, ingredients!, instructions!, category!, image!).subscribe(() => {
+      console.log('Successful editing the recipe');
+      window.location.reload();
+    })
+  }
 
   closePopup(){
     this.close.emit();    

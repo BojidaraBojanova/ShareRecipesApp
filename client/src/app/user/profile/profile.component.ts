@@ -85,4 +85,10 @@ export class ProfileComponent implements OnInit{
   hidePopup() {
     this.isPopupVisible = false
   }
+
+  deleteRecipe(recipeId: string){
+    this.recipeService.deleteRecipe(recipeId).subscribe(()=>{
+      window.location.reload();
+    })
+  }
 }

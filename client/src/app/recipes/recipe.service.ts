@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Recipe } from '../types/recipe';
 
 @Injectable({
@@ -22,6 +22,24 @@ export class RecipeService {
 
   getUserRecipes(userId: string): Observable<Recipe[]>{
     const result = this.http.get<Recipe[]>('http://localhost:3000/users/'+ userId +'/recipes');
+    return result;
+  }
+
+  editRecipe(recipeId: string, title: string, description: string, ingredients: string, instructions: string, category: string, image: string){
+    const result = this.http.put<Recipe>('http://localhost:3000/users/recipe/edit/' + recipeId, {title, description, ingredients, instructions, category, image})
+    .pipe(tap((recipe: Recipe) => {
+      console.log('Recipe is edited', recipe);
+    }))
+
+    return result;
+  }
+
+  deleteRecipe(recipeId: string){
+    const result = this.http.delete<Recipe>('http://localhost:3000/users/recipe/delete/' + recipeId, {})
+    .pipe(tap((recipe: Recipe) => {
+      console.log('Recipe is deleted');
+    }))
+
     return result;
   }
 }

@@ -115,3 +115,8 @@
     cursor: pointer;
     border: none;
 }
+
+.noRecipes{
+    color: #388E3C;
+    text-align: center;
+}

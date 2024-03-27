@@ -10,3 +10,11 @@ exports.create = async(userId, recipeData) => {
 
     return createdRecipe;
 };
+
+exports.editRecipe = async(recipeId, recipeData) => {
+    const updatedRecipe = await Recipe.findByIdAndUpdate(recipeId, recipeData, {new: true, runValidators: true});
+
+    return updatedRecipe;
+}
+
+exports.deleteRecipe = (recipeId) => Recipe.findByIdAndDelete(recipeId);

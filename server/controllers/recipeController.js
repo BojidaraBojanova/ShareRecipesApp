@@ -39,4 +39,24 @@ router.get('/users/:userId/recipes', async(req, res) => {
     };
 })
 
+router.put('/users/recipe/edit/:recipeId', async(req, res) => {
+    const recipeData = req.body;
+    const recipeId = req.params.recipeId;
+
+    try {
+        const editedRecipe = await recipeService.editRecipe(recipeId, recipeData);
+        res.status(201).json(editedRecipe);
+    } catch (error) {
+        console.error('Error editing the recipe', error);
+        res.status(500).json({ message: 'Error editing the recipe'})
+    }
+})
+
+router.delete('/users/recipe/delete/:recipeId', async(req, res) => {
+    const recipeId = req.params.recipeId;
+    const deletedRecipe = await recipeService.deleteRecipe(recipeId);
+
+    res.status(201).json(deletedRecipe);
+})
+
 module.exports = router;

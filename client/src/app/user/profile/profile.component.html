@@ -22,15 +22,18 @@
                 <h2>My recipes</h2>
             </div>
             <div class="container-list">
-                <ol>
+                <ol *ngIf="recipes.length > 0; else noRecipes">
                     <li class="recipesListWrapper" *ngFor="let recipe of recipes">
                         <a [routerLink]="'/category/recipe/details/'+recipe?._id">{{recipe.title}}</a>
                         <div class="btns">
                             <button class="recipe-btn" (click)="showEditRecipePopup(recipe._id)"><img src="../../../assets/icons/edit-solid-green.svg" alt=""></button>
-                            <button class="recipe-btn"><img src="../../../assets/icons/delete-red-solid.svg" alt=""></button>     
+                            <button class="recipe-btn" (click)="deleteRecipe(recipe._id)"><img src="../../../assets/icons/delete-red-solid.svg" alt=""></button>     
                         </div>
                     </li>
                 </ol>
+                <ng-template #noRecipes>
+                    <p class="noRecipes">No recipes added yet.</p>
+                </ng-template>
             </div>
         </div>
     </div>
