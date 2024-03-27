@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { RecipeEditPopupComponent } from './recipe-edit-popup/recipe-edit-popup.component';
 
 const routes: Routes = [
   {
@@ -26,9 +27,7 @@ const routes: Routes = [
     component: AddRecipeComponent,
     
   },
-
   
-
 ];
 
 @NgModule({

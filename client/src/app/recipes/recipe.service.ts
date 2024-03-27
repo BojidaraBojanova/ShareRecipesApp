@@ -19,4 +19,9 @@ export class RecipeService {
     const result = this.http.get<Recipe>('http://localhost:3000/category/recipe/details/'+recipeId);
     return result;
   }
+
+  getUserRecipes(userId: string): Observable<Recipe[]>{
+    const result = this.http.get<Recipe[]>('http://localhost:3000/users/'+ userId +'/recipes');
+    return result;
+  }
 }

@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditPopupComponent } from './profile-edit-popup/profile-edit-popup.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
+import { RecipeEditPopupComponent } from './recipe-edit-popup/recipe-edit-popup.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
     RegisterComponent,
     ProfileComponent,
     ProfileEditPopupComponent,
-    AddRecipeComponent
+    AddRecipeComponent,
+    RecipeEditPopupComponent
   ],
   imports: [
     CommonModule,

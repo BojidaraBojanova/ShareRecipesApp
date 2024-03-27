@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from '../user.service';
 import { ProfileDetails, User } from 'src/app/types/user';
+import { RecipeService } from 'src/app/recipes/recipe.service';
+import { Recipe } from 'src/app/types/recipe';
 
 @Component({
   selector: 'app-profile',
@@ -15,20 +17,29 @@ export class ProfileComponent implements OnInit{
     email: ''
   };
 
+  recipes: Recipe[] = [];
+  recipeId: string = '';
+
   isPopupVisible: boolean = false;
+  isEditRecipePopupVisible: boolean = false;
   
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private recipeService: RecipeService){}
+
+
+  @Output() editRecipeClicked: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
       
     this.userService.user$.subscribe(user => {
       if(user){
        this.showProfileDetails(user);
+       this.getUserRecipes(user._id)
       }else{
         const storedUser = this.userService.getUser();
 
         if(storedUser){
           this.showProfileDetails(storedUser);
+          this.getUserRecipes(storedUser._id);
         }else{
           this.profileDetails = {
             firstName: '',
@@ -39,6 +50,12 @@ export class ProfileComponent implements OnInit{
       }
     })  
   }
+
+  getUserRecipes(userId: string){
+    this.recipeService.getUserRecipes(userId).subscribe(recipes => {
+      return this.recipes = recipes
+    })
+  }
  
   showProfileDetails(user: User):void{
     const{ firstName, lastName, email } = user;
@@ -47,6 +64,18 @@ export class ProfileComponent implements OnInit{
       lastName,
       email
     }
+  }
+
+  showEditRecipePopup(recipeId: string){
+    this.isEditRecipePopupVisible  = true;
+    this.recipeId = recipeId;
+    console.log(recipeId)
+    //this.editRecipeClicked.emit(recipeId);
+    console.log(this.isEditRecipePopupVisible)
+  }
+
+  hideEditRecipePopup(){
+    this.isEditRecipePopupVisible  = false;
   }
 
   showPopup(){

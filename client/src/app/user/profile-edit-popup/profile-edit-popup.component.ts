@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ProfileDetails, User } from 'src/app/types/user';
+import { User } from 'src/app/types/user';
 import { UserService } from '../user.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { appEmailValidator } from 'src/app/shared/validators/emailVaidator/app-email-validator';

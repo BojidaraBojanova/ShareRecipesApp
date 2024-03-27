@@ -23,8 +23,13 @@
             </div>
             <div class="container-list">
                 <ol>
-                    <li><a href="">Recipe 1</a></li>
-                    <li><a href="">Recipe 2</a></li>
+                    <li class="recipesListWrapper" *ngFor="let recipe of recipes">
+                        <a [routerLink]="'/category/recipe/details/'+recipe?._id">{{recipe.title}}</a>
+                        <div class="btns">
+                            <button class="recipe-btn" (click)="showEditRecipePopup(recipe._id)"><img src="../../../assets/icons/edit-solid-green.svg" alt=""></button>
+                            <button class="recipe-btn"><img src="../../../assets/icons/delete-red-solid.svg" alt=""></button>     
+                        </div>
+                    </li>
                 </ol>
             </div>
         </div>
@@ -32,5 +37,8 @@
 
     <div *ngIf="isPopupVisible" class="popup-container">
         <app-profile-edit-popup (close)="hidePopup()"/>
+    </div>
+    <div *ngIf="isEditRecipePopupVisible" class="popup-container">
+        <app-recipe-edit-popup [recipeId]="recipeId" (close)="hideEditRecipePopup()"/>
     </div>
 </section>
