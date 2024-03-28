@@ -4,6 +4,7 @@ import { CategoryComponent } from './category/category.component';
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { RecipesByCategoryComponent } from './recipes-by-category/recipes-by-category.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
   ],
   imports: [
     CommonModule,
-    RecipesRoutingModule
+    RecipesRoutingModule,
+    SharedModule
   ],
   exports: [
     CategoryComponent,

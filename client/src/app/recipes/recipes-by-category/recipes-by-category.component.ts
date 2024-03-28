@@ -10,6 +10,7 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipesByCategoryComponent implements OnInit{
   recipes: Recipe[] = [];
+  isLoading: boolean = true;
 
   constructor( private route: ActivatedRoute, private recipeService: RecipeService){}
 
@@ -19,6 +20,7 @@ export class RecipesByCategoryComponent implements OnInit{
         if(categoryId){
           this.recipeService.getRecipesByCategory(categoryId).subscribe(recipes => {
             this.recipes = recipes;
+            this.isLoading = false;
             console.log('recipes:', recipes)
           })
         }

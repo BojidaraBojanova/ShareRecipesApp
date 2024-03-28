@@ -1,4 +1,7 @@
-<section class="category">
+<div class="loading" *ngIf="isLoading">
+    <app-loader />
+</div>
+<section  *ngIf="!isLoading" class="category">
     <div class="title">
         <h1>Categories</h1>
     </div>

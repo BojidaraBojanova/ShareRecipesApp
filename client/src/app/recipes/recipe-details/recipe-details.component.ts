@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RecipeDetailsComponent implements OnInit {
 
   recipe: Recipe | undefined;
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService){}
 
@@ -20,6 +21,7 @@ export class RecipeDetailsComponent implements OnInit {
         if(recipeId){
           this.recipeService.getRecipeDetails(recipeId).subscribe(recipe => {
             this.recipe = recipe;
+            this.isLoading = false;
             console.log(this.recipe)
           })
         }
