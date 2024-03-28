@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit{
   };
 
   recipes: Recipe[] = [];
+  favoriteRecipe: Recipe[] = [];
   recipeId: string = '';
 
   isPopupVisible: boolean = false;
@@ -40,6 +41,7 @@ export class ProfileComponent implements OnInit{
         if(storedUser){
           this.showProfileDetails(storedUser);
           this.getUserRecipes(storedUser._id);
+          this.getUserFavoriteRecipes(storedUser._id)
         }else{
           this.profileDetails = {
             firstName: '',
@@ -54,6 +56,12 @@ export class ProfileComponent implements OnInit{
   getUserRecipes(userId: string){
     this.recipeService.getUserRecipes(userId).subscribe(recipes => {
       return this.recipes = recipes
+    })
+  }
+
+  getUserFavoriteRecipes(userId: string){
+    this.userService.getFavoriteRecipes(userId).subscribe(recipes => {
+      return this.favoriteRecipe = recipes;
     })
   }
  

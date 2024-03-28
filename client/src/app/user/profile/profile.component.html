@@ -12,9 +12,14 @@
                 <h2>Liked recipes</h2>
             </div>
             <div class="container-list">
-                <ol>
-                    <li><a href="">Recipe 1</a></li>
+                <ol *ngIf="favoriteRecipe.length > 0; else noFavRecipes">
+                    <li *ngFor="let recipe of favoriteRecipe">
+                        <a [routerLink]="'/category/recipe/details/'+recipe?._id">{{recipe.title}}</a>
+                    </li>
                 </ol>
+                <ng-template #noFavRecipes>
+                    <p class="noRecipes">No recipes added yet.</p>
+                </ng-template>
             </div>
         </div>
         <div class="container">
