@@ -2,6 +2,8 @@ const Recipe = require('../models/Recipe');
 
 exports.getOne = (recipeId) => Recipe.findById(recipeId);
 
+exports.getLatest = () => Recipe.find().sort({ createdAt: -1 }).limit(3);
+
 exports.create = async(userId, recipeData) => {
     const createdRecipe = await Recipe.create({
         ...recipeData,

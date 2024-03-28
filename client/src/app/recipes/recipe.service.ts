@@ -20,6 +20,11 @@ export class RecipeService {
     return result;
   }
 
+  getLastThreeRecipes(): Observable<Recipe[]> {
+    const result = this.http.get<Recipe[]>('http://localhost:3000/home/last-three-recipes');
+    return result;
+  }
+
   getUserRecipes(userId: string): Observable<Recipe[]>{
     const result = this.http.get<Recipe[]>('http://localhost:3000/users/'+ userId +'/recipes');
     return result;

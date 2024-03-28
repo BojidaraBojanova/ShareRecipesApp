@@ -6,42 +6,15 @@
     </div>
 </section>
 
-<section class="theLastRecipes">
-    <a href="">
-        <div class="recipeCard">
-            <div class="recipeCard-img">
-                <img src="../../assets/images/homeBackground3.jpg" alt="">
-            </div>
-            <div class="recipeCard-title">
-                <h2>Salad</h2>
-            </div>
-    
+<section class="theLastRecipes" *ngIf="recipes.length > 0">
+        <div class="recipeCard" *ngFor="let recipe of recipes">
+             <a [routerLink]="'/category/recipe/details/' + recipe?._id" target="_top">
+                <div class="recipeCard-img">
+                    <img src="{{ recipe.image }}" alt="">
+                </div>
+                <div class="recipeCard-title">
+                    <h2>{{ recipe.title }}</h2>
+                </div>
+             </a>
         </div>
-    </a>
-
-    <a href="">
-        <div class="recipeCard">
-            <div class="recipeCard-img">
-                <img src="../../assets/images/homeBackground3.jpg" alt="">
-            </div>
-            <div class="recipeCard-title">
-                <h2>Salad</h2>
-            </div>
-    
-        </div>
-    </a>
-
-    <a href="">
-        <div class="recipeCard">
-            <div class="recipeCard-img">
-                <img src="../../assets/images/homeBackground3.jpg" alt="">
-            </div>
-            <div class="recipeCard-title">
-                <h2>Salad</h2>
-            </div>
-    
-        </div>
-    </a>
-    
-
 </section>

@@ -59,4 +59,13 @@ router.delete('/users/recipe/delete/:recipeId', async(req, res) => {
     res.status(201).json(deletedRecipe);
 })
 
+router.get('/home/last-three-recipes', async(req, res) => {
+    try {
+        const recipes = await recipeService.getLatest();
+        res.json(recipes);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
 module.exports = router;
