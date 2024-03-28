@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../types/recipe';
@@ -59,11 +59,11 @@ export class UserService implements OnDestroy{
       }));      
   }
 
-  getProfile(){
-    return this.http.get<User>('http://localhost:3000/users/profile').pipe(
-      tap((user) => this.user$$.next(user))
-    );
-  }
+  // getProfile(){
+  //   return this.http.get<User>('http://localhost:3000/users/profile').pipe(
+  //     tap((user) => this.user$$.next(user))
+  //   );
+  // }
 
   getUser(): User | null {
     const userString = sessionStorage.getItem(this.USER_KEY);
@@ -88,6 +88,18 @@ export class UserService implements OnDestroy{
       })
     )
     return result;
+  }
+
+  addFavoriteRecipe(userId: string, recipeId: string): Observable<User>{
+    return this.http.post<User>('http://localhost:3000/users/' + userId + '/favorite/' + recipeId, {});
+  }
+
+  removeFavoriteRecipe(userId: string, recipeId: string): Observable<User> {
+    return this.http.delete<User>('http://localhost:3000/users/' + userId + '/favorite/' + recipeId);
+  }
+
+  getFavoriteRecipes(userId: string){
+    return this.http.get<Recipe[]>('http://localhost:3000/users/favorite-recipes/' + userId);
   }
 
   ngOnDestroy(): void {

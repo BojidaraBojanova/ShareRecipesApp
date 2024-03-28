@@ -76,3 +76,38 @@ exports.editUser = async (userId, userData) => {
     return updatedUser;
 };
 
+exports.addFavoriteRecipe = async (userId, recipeId) => {
+    try{
+        const user = await User.findById(userId);
+        if(!user) {
+            throw new Error('User not found');
+        }
+        user.favoriteRecipe.push(recipeId);
+        await user.save();
+        return user;
+    } catch (error) {
+        throw new Error(`Error adding recipe in favorite: ${error.message}`);
+    }
+}
+
+exports.removeFavoriteRecipe = async(userId, recipeId) => {
+    try {
+        const user = await User.findById(userId);
+
+        if(!user){
+            throw new Error('User not found');
+        }
+        const index = user.favoriteRecipe.indexOf(recipeId);
+
+        if(index === -1){
+            throw new Error('Recipe not found in favorites');
+        }
+
+        user.favoriteRecipe.splice(index, 1);
+        await user.save();
+        return user;
+
+    } catch (error) {
+        throw new Error(`Error removing recipe from favorites: ${error.message}`)
+    }
+}

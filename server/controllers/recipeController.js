@@ -16,10 +16,8 @@ router.get('/category/recipes/:categoryId', async(req, res) => {
 
 router.get('/category/recipe/details/:recipeId', async(req, res) => {
     const recipeId = req.params.recipeId;
-    console.log(recipeId)
     try {
         const recipe = await recipeService.getOne(recipeId);
-        console.log(recipe);
         res.status(200).json(recipe);
     } catch (error) {
         console.error('Error fetching recipe', error);

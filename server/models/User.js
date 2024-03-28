@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    favoriteRecipe: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Recipe'
+    }],
     createdAt: {
         type: Date,
         default: Date.now
