@@ -10,7 +10,7 @@ router.get('/category/recipes/:categoryId', async(req, res) => {
         res.status(200).json(recipes);
     } catch (error) {
         console.error('Error fetching recipes by category', error);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 })
 
@@ -21,7 +21,7 @@ router.get('/category/recipe/details/:recipeId', async(req, res) => {
         res.status(200).json(recipe);
     } catch (error) {
         console.error('Error fetching recipe', error);
-        res.status(500).json({ message: 'Server Error' });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 })
 
@@ -33,7 +33,7 @@ router.get('/users/:userId/recipes', async(req, res) => {
         res.status(200).json(recipes);
     } catch (error) {
         console.error('Error fetching user recipes:', error);
-        res.status(500).json({message: 'Server Error'});  
+        res.status(500).json({error: 'Internal Server Error'});  
     };
 })
 
@@ -46,23 +46,34 @@ router.put('/users/recipe/edit/:recipeId', async(req, res) => {
         res.status(201).json(editedRecipe);
     } catch (error) {
         console.error('Error editing the recipe', error);
-        res.status(500).json({ message: 'Error editing the recipe'})
+        res.status(500).json({ error: 'Internal Server Error'})
     }
 })
 
 router.delete('/users/recipe/delete/:recipeId', async(req, res) => {
     const recipeId = req.params.recipeId;
-    const deletedRecipe = await recipeService.deleteRecipe(recipeId);
+    try {
+        const deletedRecipe = await recipeService.deleteRecipe(recipeId);
 
-    res.status(201).json(deletedRecipe);
+        if(deletedRecipe){
+            res.status(200).json(deletedRecipe);
+        }else{
+            res.status(404).json({ error: 'Recipe not found'})
+        }
+    } catch (error) {
+        console.error('Error deleting the recipe', error);
+        res.status(500).json({ error: 'Internal Server Error'})
+    }
+
 })
 
 router.get('/home/last-three-recipes', async(req, res) => {
     try {
         const recipes = await recipeService.getLatest();
-        res.json(recipes);
+        res.status(200).json(recipes);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('Error fetching the recipe', error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 })
 

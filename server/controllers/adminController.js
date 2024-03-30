@@ -7,24 +7,37 @@ router.post('/login', async (req, res) => {
 
     const adminData = req.body;
 
-    const result = await adminService.login(adminData);
+    try {
+        const result = await adminService.login(adminData);
 
-    res.json(result);
+        res.status(200).json(result);
 
-    const mainAdmin = await Admin.findOne({ isAdmin: true });
-    if(!mainAdmin) {
-        await Admin.create({
-            username: 'admin',
-            password: 'Admin123!',
-            email: 'adminEmail@gmail.com',
-            isAdmin: true
-        });
-        console.log('The main admin profile is created!')
+        const mainAdmin = await Admin.findOne({ isAdmin: true });
+        if(!mainAdmin) {
+            await Admin.create({
+                username: 'admin',
+                password: 'Admin123!',
+                email: 'adminEmail@gmail.com',
+                isAdmin: true
+            });
+            console.log('The main admin profile is created!')
+        }
+    } catch (error) {
+        console.error('Error in admin login', error);
+        res.status(500).json({ message: 'Internal Server Error'})
     }
+
+    
 })
 
 router.get('/logout', async (req, res) => {
-    res.json({ok: true});
+    try {
+        res.clearCookie('admin');
+        res.status(200).json({ok: true, message: 'Logout successful'});
+    } catch (error) {
+        console.error('Error in logout', error);
+        res.status(500).json({ error: 'Internal Server Error'});
+    }
 });
 
 router.post('/categories', async (req, res) => {
@@ -36,8 +49,8 @@ router.post('/categories', async (req, res) => {
 
         res.status(201).json(createdCategory);
     } catch (error) {
-        console.log('Error', error);
-        res.status(500).json({ message: 'Error creating category'})
+        console.error('Error creating category', error);
+        res.status(500).json({ error: 'Internal Server Error'})
     }
 })
 
@@ -45,9 +58,10 @@ router.get('/categories', async (req, res) => {
     try {
         const categories = await adminService.getAllCategories().lean();
 
-        res.json(categories);        
+        res.status(200).json(categories);        
     } catch (error) {
-        console.error('Error in getting the categories', error);
+        console.error('Error in fetching the categories', error);
+        res.status(500).json({ error: 'Internal Server Error' })
     }
 })
 
@@ -62,16 +76,25 @@ router.put('/editCategory/:categoryId', async(req, res) => {
         res.status(201).json(editedCategory);
 
     } catch (error) {
-        console.log('Error', error);
-        res.status(500).json({ message: 'Error editing category'})
+        console.error('Error editing category', error);
+        res.status(500).json({ error: 'Internal Server Error'})
     }
 })
 
 router.delete('/deleteCategory/:categoryId', async(req, res) => {
+   try {
     const categoryId = req.params.categoryId;
     const deletedCategory = await adminService.deleteCategory(categoryId);
-
-    res.status(201).json(deletedCategory);
+    
+    if(deletedCategory){
+        res.status(200).json(deletedCategory);
+    }else{
+        res.status(404).json({ error: 'Category not found' });
+    }
+   } catch (error) {
+    console.error('Error in deleting the category', error);
+    res.status(500).json({ error: 'Internal Server Error'})
+   }
 
 })
 
