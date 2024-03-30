@@ -9,7 +9,6 @@ import { ProfileEditPopupComponent } from './profile-edit-popup/profile-edit-pop
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeEditPopupComponent } from './recipe-edit-popup/recipe-edit-popup.component';
 
-
 @NgModule({
   declarations: [
     LoginComponent,

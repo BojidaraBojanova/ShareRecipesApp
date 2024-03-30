@@ -5,7 +5,7 @@ const userService = require('../services/userService');
 const recipeService = require('../services/recipeService');
 const Recipe = require('../models/Recipe');
 
-router.post('/register', isGuest, async(req, res) => {
+router.post('/register', async(req, res) => {
     
     const userData = req.body;
     try {
@@ -14,13 +14,13 @@ router.post('/register', isGuest, async(req, res) => {
         
     } catch (error) {
         console.error('Error in user registration', error);
-        res.status(500).json({ message: 'Internal Server Error'})
+        res.status(500).json({ message: error.message})
     }
 
 
 });
 
-router.post('/login', isGuest, async(req, res) => {
+router.post('/login', async(req, res) => {
     
     const userData = req.body;
 
@@ -30,20 +30,20 @@ router.post('/login', isGuest, async(req, res) => {
 
     } catch (error) {
         console.error('Error in user login', error);
-        res.status(500).json({ message: 'Internal Server Error'})
+        res.status(500).json({ message: error.message})
     }
 
 
 });
 
-router.get('/profile/:userId', isAuth, async(req, res) => {
+router.get('/profile/:userId', async(req, res) => {
     const userId = req.params.userId;
     try {
         const user = await userService.getOne(userId);
         res.status(200).json(user);
     } catch (error) {
         console.error('Error in fetching the user', error);
-        res.status(500).json({ message: 'Internal Server Error'})
+        res.status(500).json({ message: error.message })
     }
 
 })
@@ -54,11 +54,11 @@ router.get('/logout', async(req, res) => {
         res.status(200).json({ok: true, message: 'Logout successful'});
     } catch (error) {
         console.error('Error in logout', error);
-        res.status(500).json({ error: 'Internal Server Error'});
+        res.status(500).json({ message: error.message });
     }
 });
 
-router.put('/profile/edit/:userId', isAuth, async(req, res) => {
+router.put('/profile/edit/:userId', async(req, res) => {
     const userData = req.body;
     const userId = req.params.userId;
 
@@ -68,11 +68,11 @@ router.put('/profile/edit/:userId', isAuth, async(req, res) => {
 
     } catch (error) {
         console.error('Error in editing the user', error);
-        res.status(500).json({ error: 'Internal Server Error'});
+        res.status(500).json({ message: error.message });
     }
 })
 
-router.post('/addRecipe', isAuth, async(req, res) => {
+router.post('/addRecipe', async(req, res) => {
     const recipeData = req.body;
     const userId = req.body.userId;
     
@@ -82,11 +82,11 @@ router.post('/addRecipe', isAuth, async(req, res) => {
 
     } catch (error) {
         console.error('Error adding recipe', error);
-        res.status(500).json({ error: 'Internal Server Error'});
+        res.status(500).json({ message: error.message });
     }
 })
 
-router.post('/:userId/favorite/:recipeId', isAuth, async( req, res) => {
+router.post('/:userId/favorite/:recipeId', async( req, res) => {
     try {
         const userId = req.params.userId;
         const recipeId = req.params.recipeId;
@@ -94,23 +94,23 @@ router.post('/:userId/favorite/:recipeId', isAuth, async( req, res) => {
         res.status(201).json({message: 'Recipe added to favorites'});
     } catch (error) {
         console.error('Error adding recipe to favorite', error);
-        res.status(500).json({ error: 'Internal Server Error'});
+        res.status(500).json({ message: error.message });
     }
 })
 
-router.delete('/:userId/favorite/:recipeId', isAuth, async( req, res) => {
+router.delete('/:userId/favorite/:recipeId', async( req, res) => {
     try {
         const userId = req.params.userId;
         const recipeId = req.params.recipeId;
         await userService.removeFavoriteRecipe(userId, recipeId);
-        res.status(200).json({message: 'Recipe is removed from favorites'});
+        res.status(200).json({ message: 'Recipe is removed from favorites'});
     } catch (error) {
         console.error('Error delete recipe from favorite', error);
-        res.status(500).json({error: 'Internal Server Error'});
+        res.status(500).json({ message: error.message });
     }
 })
 
-router.get('/favorite-recipes/:userId', isAuth, async(req, res) => {
+router.get('/favorite-recipes/:userId', async(req, res) => {
     try {
         const userId = req.params.userId;
         const user = await userService.getOne(userId);
@@ -121,7 +121,7 @@ router.get('/favorite-recipes/:userId', isAuth, async(req, res) => {
         res.status(200).json(favoriteRecipes);
     } catch (error) {
         console.error('Error in fetching the favorite recipe', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ message: error.message });
     }
 })
 

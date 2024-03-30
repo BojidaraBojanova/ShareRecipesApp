@@ -10,7 +10,7 @@ router.get('/category/recipes/:categoryId', async(req, res) => {
         res.status(200).json(recipes);
     } catch (error) {
         console.error('Error fetching recipes by category', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ message: error.message });
     }
 })
 
@@ -21,7 +21,7 @@ router.get('/category/recipe/details/:recipeId', async(req, res) => {
         res.status(200).json(recipe);
     } catch (error) {
         console.error('Error fetching recipe', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ message: error.message });
     }
 })
 
@@ -33,7 +33,7 @@ router.get('/users/:userId/recipes', async(req, res) => {
         res.status(200).json(recipes);
     } catch (error) {
         console.error('Error fetching user recipes:', error);
-        res.status(500).json({error: 'Internal Server Error'});  
+        res.status(500).json({ message: error.message });  
     };
 })
 
@@ -46,7 +46,7 @@ router.put('/users/recipe/edit/:recipeId', async(req, res) => {
         res.status(201).json(editedRecipe);
     } catch (error) {
         console.error('Error editing the recipe', error);
-        res.status(500).json({ error: 'Internal Server Error'})
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -62,7 +62,7 @@ router.delete('/users/recipe/delete/:recipeId', async(req, res) => {
         }
     } catch (error) {
         console.error('Error deleting the recipe', error);
-        res.status(500).json({ error: 'Internal Server Error'})
+        res.status(500).json({ message: error.message })
     }
 
 })
@@ -73,7 +73,7 @@ router.get('/home/last-three-recipes', async(req, res) => {
         res.status(200).json(recipes);
     } catch (error) {
         console.error('Error fetching the recipe', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ message: error.message });
     }
 })
 

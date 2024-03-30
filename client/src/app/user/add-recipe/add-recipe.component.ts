@@ -57,8 +57,10 @@ export class AddRecipeComponent implements OnInit{
     const {title, description, ingredients, instructions, category, image} = this.form.value;
 
     this.userService.addRecipe(this.userId, title!, description!, ingredients!, instructions!, category!, image!).subscribe(()=>{
+      alert('Successful adding the recipe')
       this.router.navigate(['/category/recipes/' + category])
-      console.log('Successful adding the recipe');
+    }, error => {
+      alert(error.error.message);
     })
   }
 }

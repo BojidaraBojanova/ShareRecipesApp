@@ -39,7 +39,10 @@ export class RegisterComponent {
     const { firstName, lastName, email, passGroup: {password, rePassword} = {}} = this.form.value;
 
     this.userService.register(firstName!, lastName!, email!, password!, rePassword!).subscribe(() => {
+      alert('Registration is successful!');
       this.router.navigate(['/'])
+    }, error => {
+      alert(error.error.message);
     })
 
   }

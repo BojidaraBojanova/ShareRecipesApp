@@ -64,8 +64,10 @@ export class ProfileEditPopupComponent implements OnInit{
     const {firstName, lastName, email, passGroup: {password, rePassword} = {} } = this.form.value;
 
     this.userService.editUser(this.userId, firstName!, lastName!, email!, password!, rePassword!).subscribe(()=>{
-      console.log('Successful editing the user');
+      alert('Successful editing the user')
       window.location.reload();
+    }, error => {
+      alert(error.error.message);
     })
   }
 

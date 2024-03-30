@@ -28,7 +28,10 @@ export class LoginComponent {
 
 
     this.userService.login(email!, password!).subscribe(()=>{
+      alert('Login is successful!')
       this.router.navigate(['/']);
+    }, error => {
+      alert(error.error.message);
     })
   }
 

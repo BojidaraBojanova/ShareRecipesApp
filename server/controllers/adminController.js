@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
         }
     } catch (error) {
         console.error('Error in admin login', error);
-        res.status(500).json({ message: 'Internal Server Error'})
+        res.status(500).json({ message: error.message })
     }
 
     
@@ -36,7 +36,7 @@ router.get('/logout', async (req, res) => {
         res.status(200).json({ok: true, message: 'Logout successful'});
     } catch (error) {
         console.error('Error in logout', error);
-        res.status(500).json({ error: 'Internal Server Error'});
+        res.status(500).json({ message: error.message });
     }
 });
 
@@ -50,7 +50,7 @@ router.post('/categories', async (req, res) => {
         res.status(201).json(createdCategory);
     } catch (error) {
         console.error('Error creating category', error);
-        res.status(500).json({ error: 'Internal Server Error'})
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -61,7 +61,7 @@ router.get('/categories', async (req, res) => {
         res.status(200).json(categories);        
     } catch (error) {
         console.error('Error in fetching the categories', error);
-        res.status(500).json({ error: 'Internal Server Error' })
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -77,7 +77,7 @@ router.put('/editCategory/:categoryId', async(req, res) => {
 
     } catch (error) {
         console.error('Error editing category', error);
-        res.status(500).json({ error: 'Internal Server Error'})
+        res.status(500).json({ message: error.message })
     }
 })
 
@@ -93,7 +93,7 @@ router.delete('/deleteCategory/:categoryId', async(req, res) => {
     }
    } catch (error) {
     console.error('Error in deleting the category', error);
-    res.status(500).json({ error: 'Internal Server Error'})
+    res.status(500).json({ message: error.message })
    }
 
 })

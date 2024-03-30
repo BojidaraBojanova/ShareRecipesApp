@@ -6,7 +6,7 @@
         <div class="loginFormWrapper">
             <form class="logForm" [formGroup]="form" (ngSubmit)="login()">
                 <label for="email">Email:</label>
-                <input type="text" name="email" id="email" formControlName="email">
+                <input type="text" name="email" id="email" formControlName="email" autocomplete="email">
 
                 <ng-container *ngIf="form.get('email')?.touched">
                     <p class="error" *ngIf="form.get('email')?.errors?.['required']">Email is required!</p>
@@ -15,7 +15,7 @@
 
 
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" formControlName="password">
+                <input type="password" name="password" id="password" formControlName="password" autocomplete="current-password">
 
                 <ng-container *ngIf="form.get('password')?.touched">
                     <p class="error" *ngIf="form.get('password')?.errors?.['required']">Password is required!</p>
