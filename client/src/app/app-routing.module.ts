@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AdminLoginComponent } from './admin/login/admin-login.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -14,9 +15,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'admin/login',
-    component: AdminLoginComponent
-  }
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  { path: '**', redirectTo: '/404' },
+  { path: '404', component: NotFoundComponent}
 
 ];
 
