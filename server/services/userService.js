@@ -16,22 +16,37 @@ exports.register = async(userData) =>{
         userData.password = await bcrypt.hash(userData.password, 10);
     }
 
-    const user = await User.create(userData);
-
-    const accessToken = jwt.sign({
-        _id: user._id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-    }, SECRET_KEY)
-
-    return{
-        _id: user._id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        accessToken
+    const user = await User.findOne({ email: userData.email });
+    if(user){
+        throw new Error('User already exists');
     }
+
+    const createdUser = await User.create(userData);
+
+    const token = await generateToken(createdUser);
+
+    // const accessToken = jwt.sign({
+    //     _id: createdUser._id,
+    //     email: createdUser.email,
+    //     firstName: createdUser.firstName,
+    //     lastName: createdUser.lastName,
+    // }, SECRET_KEY)
+
+    // return{
+    //     _id: createdUser._id,
+    //     email: createdUser.email,
+    //     firstName: createdUser.firstName,
+    //     lastName: createdUser.lastName,
+    //     accessToken
+    // }
+
+    return {
+        _id: createdUser._id,
+        email: createdUser.email,
+        firstName: createdUser.firstName,
+        lastName: createdUser.lastName,
+        token
+    };
 };
 
 exports.login = async(userData) => {
@@ -48,19 +63,21 @@ exports.login = async(userData) => {
         throw new Error('Wrong password!');
    }
 
-   const accessToken = jwt.sign({
-    _id: user._id,
-    email: user.email,
-    firstName: user.firstName,
-    lastName: user.lastName,
-    }, SECRET_KEY)
+   const token = await generateToken(user);
+
+//    const accessToken = jwt.sign({
+//     _id: user._id,
+//     email: user.email,
+//     firstName: user.firstName,
+//     lastName: user.lastName,
+//     }, SECRET_KEY)
 
     return{
         _id: user._id,
         email: user.email,
         firstName: user.firstName,
         lastName: user.lastName,
-        accessToken
+        token
     }
 
 };
@@ -110,4 +127,15 @@ exports.removeFavoriteRecipe = async(userId, recipeId) => {
     } catch (error) {
         throw new Error(`Error removing recipe from favorites: ${error.message}`)
     }
+}
+
+function generateToken(user){
+    const payload = {
+        _id: user._id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+    }
+
+    return jwt.sign(payload, SECRET_KEY, { expiresIn: '2h' });
 }

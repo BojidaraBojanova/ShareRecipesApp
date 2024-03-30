@@ -1,10 +1,11 @@
 const router = require('express').Router();
 
+const { isGuest, isAuth } = require('../middlewares/authMiddleware')
 const userService = require('../services/userService');
 const recipeService = require('../services/recipeService');
 const Recipe = require('../models/Recipe');
 
-router.post('/register', async(req, res) => {
+router.post('/register', isGuest, async(req, res) => {
     
     const userData = req.body;
     try {
@@ -19,7 +20,7 @@ router.post('/register', async(req, res) => {
 
 });
 
-router.post('/login', async(req, res) => {
+router.post('/login', isGuest, async(req, res) => {
     
     const userData = req.body;
 
@@ -35,7 +36,7 @@ router.post('/login', async(req, res) => {
 
 });
 
-router.get('/profile/:userId', async(req, res) => {
+router.get('/profile/:userId', isAuth, async(req, res) => {
     const userId = req.params.userId;
     try {
         const user = await userService.getOne(userId);
@@ -57,7 +58,7 @@ router.get('/logout', async(req, res) => {
     }
 });
 
-router.put('/profile/edit/:userId', async(req, res) => {
+router.put('/profile/edit/:userId', isAuth, async(req, res) => {
     const userData = req.body;
     const userId = req.params.userId;
 
@@ -71,7 +72,7 @@ router.put('/profile/edit/:userId', async(req, res) => {
     }
 })
 
-router.post('/addRecipe', async(req, res) => {
+router.post('/addRecipe', isAuth, async(req, res) => {
     const recipeData = req.body;
     const userId = req.body.userId;
     
@@ -85,7 +86,7 @@ router.post('/addRecipe', async(req, res) => {
     }
 })
 
-router.post('/:userId/favorite/:recipeId', async( req, res) => {
+router.post('/:userId/favorite/:recipeId', isAuth, async( req, res) => {
     try {
         const userId = req.params.userId;
         const recipeId = req.params.recipeId;
@@ -97,7 +98,7 @@ router.post('/:userId/favorite/:recipeId', async( req, res) => {
     }
 })
 
-router.delete('/:userId/favorite/:recipeId', async( req, res) => {
+router.delete('/:userId/favorite/:recipeId', isAuth, async( req, res) => {
     try {
         const userId = req.params.userId;
         const recipeId = req.params.recipeId;
@@ -109,7 +110,7 @@ router.delete('/:userId/favorite/:recipeId', async( req, res) => {
     }
 })
 
-router.get('/favorite-recipes/:userId', async(req, res) => {
+router.get('/favorite-recipes/:userId', isAuth, async(req, res) => {
     try {
         const userId = req.params.userId;
         const user = await userService.getOne(userId);

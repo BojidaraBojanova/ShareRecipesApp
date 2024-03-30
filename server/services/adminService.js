@@ -18,17 +18,19 @@ exports.login = async(adminData) => {
         throw new Error('Wrong password!');
     }
 
-    const accessToken = jwt.sign({
-        _id: admin._id,
-        email: admin.email,
-        username: admin.username
-    }, SECRET_KEY)
+    // const accessToken = jwt.sign({
+    //     _id: admin._id,
+    //     email: admin.email,
+    //     username: admin.username
+    // }, SECRET_KEY)
+
+    const token = await generateToken(admin);
 
     return{
         _id: admin._id,
         email: admin.email,
         username: admin.username,
-        accessToken
+        token
     }
 };
 
@@ -47,3 +49,13 @@ exports.getAllCategories = () => Category.find();
 exports.editCategory = (categoryId, categoryData) => Category.findByIdAndUpdate(categoryId, categoryData, { runValidators: true });
 
 exports.deleteCategory = (categoryId) => Category.findByIdAndDelete(categoryId);
+
+function generateToken(admin){
+    const payload = {
+        _id: admin._id,
+        email: admin.email,
+        username: admin.username
+    }
+
+    return jwt.sign(payload, SECRET_KEY, { expiresIn: '2h' });
+}
