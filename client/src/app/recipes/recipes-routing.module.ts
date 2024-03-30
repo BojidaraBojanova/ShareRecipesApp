@@ -8,15 +8,15 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 const routes: Routes = [
 
   {
-    path: 'category',
+    path: '',
     component: CategoryComponent
   },
   {
-    path: 'category/recipes/:categoryId',
+    path: 'recipes/:categoryId',
     component: RecipesByCategoryComponent
   },
   {
-    path: 'category/recipe/details/:recipeId',
+    path: 'recipe/details/:recipeId',
     component: RecipeDetailsComponent
   }
 

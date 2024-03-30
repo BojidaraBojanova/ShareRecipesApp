@@ -4,32 +4,31 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
-import { UserAuthActivate } from '../guards/userAuth.activate';
+import { UserAuthGuard } from '../guards/userAuth.guard';
+import { InverseUserAuthGuard } from '../guards/inverseUserAuth.guard';
 
 const routes: Routes = [
   {
-    path: 'users/login',
+    path: 'login',
     component: LoginComponent,
-    canActivate: [!UserAuthActivate]
+    canActivate: [InverseUserAuthGuard]
     
   },
   {
-    path: 'users/register',
+    path: 'register',
     component: RegisterComponent,
-    canActivate: [!UserAuthActivate]
-
-    
+    canActivate: [InverseUserAuthGuard]
   },
   {
-    path: 'users/profile',
+    path: 'profile',
     component: ProfileComponent,
-    canActivate: [UserAuthActivate]
+    canActivate: [UserAuthGuard]
     
   },
   {
-    path: 'users/addRecipe',
+    path: 'addRecipe',
     component: AddRecipeComponent,
-    canActivate: [UserAuthActivate]
+    canActivate: [UserAuthGuard]
   },
 
   

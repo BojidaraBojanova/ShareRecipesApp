@@ -15,6 +15,14 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'category',
+    loadChildren: () => import('./recipes/recipes.module').then(m => m.RecipesModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
