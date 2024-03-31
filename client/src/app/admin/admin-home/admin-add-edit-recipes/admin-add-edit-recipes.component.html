@@ -1,0 +1,103 @@
+<div class="admin-wrapper">
+    <app-admin-navbar />
+    <div class="addRecipes-wrapper">
+        <div class="form-container-wrapper">
+            <div class="form-title">
+                <h2>{{isEditMode ? 'Edit' : 'Add'}} Recipes</h2>
+            </div>
+            <div class="form-wrapper">
+                <form [formGroup]="form" (ngSubmit)="addOrEditRecipe()">
+                    <label for="title">Title:</label>
+                <input type="text" name="title" id="title" formControlName="title">
+
+                <ng-container *ngIf="form.get('title')?.touched">
+                    <p class="error" *ngIf="form.get('title')?.errors?.['required']">Title is required!</p>
+                </ng-container>
+
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" cols="30" rows="3" formControlName="description"></textarea>
+
+                <ng-container *ngIf="form.get('description')?.touched">
+                    <p class="error" *ngIf="form.get('description')?.errors?.['required']">Description is required!</p>
+                </ng-container>
+
+                <label for="ingredients">Ingredients:</label>
+                <textarea name="ingredients" id="ingredients" cols="30" rows="3" placeholder="Add every ingredient on new row" formControlName="ingredients"></textarea>
+                
+                <ng-container *ngIf="form.get('ingredients')?.touched">
+                    <p class="error" *ngIf="form.get('ingredients')?.errors?.['required']">Ingredients is required!</p>
+                </ng-container>
+
+                <label for="instructions">Instructions:</label>
+                <textarea name="instructions" id="instructions" cols="30" rows="3" placeholder="Add every instruction on new row" formControlName="instructions"></textarea>
+                
+                <ng-container *ngIf="form.get('instructions')?.touched">
+                    <p class="error" *ngIf="form.get('instructions')?.errors?.['required']">Instructions is required!</p>
+                </ng-container>
+
+                <div class="form-group">
+                    <label for="category">Category:</label>
+                    <select name="category" id="category" formControlName="category">
+                        <option value="" disabled selected>Select a category</option>
+                        <option *ngFor="let category of categories" [value]="category._id">{{category.categoryName}}</option>
+                    </select>
+                    <div *ngIf="form.get('category')?.invalid && form.get('category')?.touched" class="error">Please select a category</div>
+                </div>
+
+                <label for="image">Image</label>
+                <input type="text" name="image" id="image" formControlName="image">
+
+                <ng-container *ngIf="form.get('image')?.touched">
+                    <p class="error" *ngIf="form.get('image')?.errors?.['required']">Image is required!</p>
+                </ng-container>
+
+                <div class="submitBtn-wrapper">
+                    <button type="submit" class="addRecipeBtn" [ngClass]="{'invalid-button': form.invalid , 'valid-button' : !form.invalid}">{{ isEditMode ? 'Edit' : 'Add'}} Recipe</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="recipeTable-container-wrapper">
+            <div class="recipeTable-wrapper">
+                <table>
+                    <thead>
+                        <tr class="">
+                            <td>Title</td>
+                            <td>Image</td>
+                            <td>Edit</td>
+                            <td>Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="recipes.length > 0; else noRecipes">
+                        <tr *ngFor="let recipe of recipes">
+                            <td>{{ recipe.title }}</td>
+                            <td class="img-td">
+                                <div class="img-wrapper">
+                                    <img src={{recipe.image}} alt="">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="table-btn green" (click)="editRecipe(recipe)">
+                                    <img src="../../../../assets/icons/edit-solid.svg" alt="">
+                                </button>
+                                <!-- <a routerLink="/admin/editCategory" class="table-edit-btn green">
+                                    <img src="../../../../assets/icons/edit-solid.svg" alt="">
+                                </a> -->
+                            </td>
+                            <td>
+                                <button class="table-btn red" (click)="deleteRecipe(recipe._id)">
+                                    <img src="../../../../assets/icons/delete-solid.svg" alt="">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                   
+                </table>
+
+                <ng-template #noRecipes>
+                    <p>No recipes available.</p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

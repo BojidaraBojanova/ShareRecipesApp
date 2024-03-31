@@ -1,0 +1,200 @@
+.admin-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.addRecipes-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form-container-wrapper{
+    width: 50%;
+    height: 100%;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+}
+
+.form-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: #388E3C;
+    font-family: 'CustomFont-Bold';
+    font-size: 2rem;
+}
+
+.form-wrapper{
+    padding: 0 2rem 2rem 2rem;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+form label{
+    color: #388E3C;
+    font-family: 'CustomFont-Bold';
+    padding-top: 1rem;
+}
+
+form input{
+    font-size: 1rem;
+    height: 5vh;
+}
+
+.submitBtn-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addRecipeBtn{
+    margin-top: 2rem;
+    width: 20%;
+    height: 8vh;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: 1rem;
+    font-family: 'CustomFont-Bold';
+    cursor: pointer;
+}
+
+.invalid-button{
+    background-color: gray;
+    cursor:default;
+}
+
+.valid-button{
+    background-color: #388E3C;
+    cursor: pointer;
+
+}
+
+.valid-button:hover{
+    background-color: #8BC34A;
+}
+
+.error{
+    color: red;
+    font-family: 'CustomFont-MediumItalic';
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.recipeTable-container-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.recipeTable-wrapper{
+    width: 70%;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: center;
+}
+
+thead{
+    font-family: 'CustomFont-Bold';
+    background-color: #388E3C;
+    color: white;
+    height: 5vh;
+}
+
+
+tbody{
+    margin-top: 1rem;
+    font-family: 'CustomFont-MediumItalic';
+    background-color: #DDEEDF;
+    color: #388E3C;
+}
+
+tbody td{ 
+    padding: 1rem;
+}
+
+.img-td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-wrapper{
+    width: 80px;
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+}
+
+.img-wrapper img{
+    flex: 1;
+    height: auto;
+    object-fit: cover;
+}
+
+.table-btn{
+    width: 3vw;
+    height: 5.5vh;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+}
+
+
+.table-edit-btn{
+    width: 100%;
+    height: 100%;
+    padding: 0.8rem 0.8rem 0.5rem 0.8rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.table-edit-btn img{
+    width: 1.3vw;
+}
+
+.table-btn img{
+    width: 1.1vw;
+}
+
+
+.green{
+    background-color: #388E3C;
+}
+
+.red{
+    background-color: #D21312;
+}
+
+.green:hover{
+    background-color: #8BC34A;
+}
+
+.red:hover{
+    background-color: #ED2B2A;
+}
