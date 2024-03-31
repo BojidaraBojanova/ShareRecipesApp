@@ -54,6 +54,14 @@ form input{
     height: 5vh;
 }
 
+.form-group{
+    padding-top: 1rem;
+}
+
+.form-group select{
+    margin-left: 1rem;
+}
+
 .submitBtn-wrapper{
     display: flex;
     justify-content: center;
