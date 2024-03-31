@@ -10,6 +10,14 @@ export class RecipeService {
 
   constructor(private http: HttpClient) { }
 
+  getAllRecipes(){
+    const result = this.http.get<Recipe[]>('http://localhost:3000/admin/recipes', {})
+    .pipe(tap((recipes: Recipe[]) => {
+      console.log('Recipes is get')
+    }))
+    return result;
+  }
+
   getRecipesByCategory(categoryId: string): Observable<Recipe[]>{
     const result = this.http.get<Recipe[]>('http://localhost:3000/category/recipes/'+categoryId);
     return result;

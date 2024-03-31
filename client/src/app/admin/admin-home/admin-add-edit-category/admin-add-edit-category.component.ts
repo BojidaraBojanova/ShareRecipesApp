@@ -40,7 +40,6 @@ export class AdminAddEditCategoryComponent implements OnInit{
   }
 
   addOrEditCategory(){
-    console.log('addOrEdit');
     
     const { categoryName, image } = this.form.value;
 

@@ -77,4 +77,15 @@ router.get('/home/last-three-recipes', async(req, res) => {
     }
 })
 
+router.get('/admin/recipes', async(req, res) => {
+    try{
+        const recipes = await recipeService.getAllRecipes();
+
+        res.status(200).json(recipes);
+    }catch (error) {
+        console.error('Error in fetching the recipes', error);
+        res.status(500).json({ message: error.message });
+    }
+})
+
 module.exports = router;

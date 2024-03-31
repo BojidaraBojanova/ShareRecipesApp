@@ -1,5 +1,7 @@
 const Recipe = require('../models/Recipe');
 
+exports.getAllRecipes = () => Recipe.find();
+
 exports.getOne = (recipeId) => Recipe.findById(recipeId);
 
 exports.getLatest = () => Recipe.find().sort({ createdAt: -1 }).limit(3);

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { Admin } from '../types/admin';
 import { Category } from '../types/category';
+import { Recipe } from '../types/recipe';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,15 @@ export class AdminService {
       sessionStorage.setItem(this.ADMIN_KEY, JSON.stringify(admin));
     }));
 
+    return result;
+  }
+
+  addRecipe(ownerId: string, title: string, description: string, ingredients: string, instructions: string, category: string, image: string){
+    const result = this.http.post<Recipe>('http://localhost:3000/admin/addRecipe', {ownerId, title, description, ingredients, instructions, category, image}).pipe(
+      tap((recipe) => {
+        console.log(recipe);
+      })
+    )
     return result;
   }
 

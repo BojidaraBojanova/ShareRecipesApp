@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-const { isGuest, isAuth } = require('../middlewares/authMiddleware')
 const userService = require('../services/userService');
 const recipeService = require('../services/recipeService');
 const Recipe = require('../models/Recipe');

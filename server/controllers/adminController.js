@@ -1,5 +1,6 @@
 const Admin = require('../models/Admin');
 const adminService = require('../services/adminService');
+const recipeService = require('../services/recipeService')
 
 const router = require('express').Router();
 
@@ -52,6 +53,21 @@ router.post('/categories', async (req, res) => {
         console.error('Error creating category', error);
         res.status(500).json({ message: error.message })
     }
+})
+
+router.post('/addRecipe', async(req, res) => {
+    const recipeData = req.body;
+    const ownerId = req.body.ownerId;
+
+    try {
+        const result = await recipeService.create(ownerId, recipeData);
+        res.status(201).json(result);
+
+    } catch (error) {
+        console.error('Error adding recipe', error);
+        res.status(500).json({ message: error.message });
+    }
+
 })
 
 router.get('/categories', async (req, res) => {
