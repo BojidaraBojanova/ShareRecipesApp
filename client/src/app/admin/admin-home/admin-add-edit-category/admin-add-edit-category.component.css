@@ -70,7 +70,7 @@ form button{
     cursor: pointer;
 }
 
-button:hover{
+.submitBtn:hover{
     background-color: #8BC34A;
 }
 

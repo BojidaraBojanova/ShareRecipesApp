@@ -74,25 +74,27 @@ form input{
     height: 8vh;
     border: none;
     border-radius: 0.5rem;
-    color: white;
     font-size: 1rem;
     font-family: 'CustomFont-Bold';
     cursor: pointer;
 }
 
 .invalid-button{
-    background-color: gray;
+    color: gray;
     cursor:default;
 }
 
 .valid-button{
     background-color: #388E3C;
+    color: white;
     cursor: pointer;
 
 }
 
 .valid-button:hover{
     background-color: #8BC34A;
+    color: white;
+
 }
 
 .error{

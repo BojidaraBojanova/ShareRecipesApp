@@ -34,7 +34,6 @@ export class AdminAddEditRecipesComponent implements OnInit{
       this.loadCategories();
       this.loadRecipes();
       this.getOwnerId();
-      console.log(this.ownerId)
   }
 
   getOwnerId(): void{

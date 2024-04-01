@@ -18,7 +18,7 @@
                         <p class="error" *ngIf="form.get('image')?.errors?.['required']">Image is required!</p>
                     </ng-container>
                     <div class="btn-wrapper">
-                        <button type="submit">{{ isEditMode ? 'Edit' : 'Add'}} Category</button>
+                        <button type="submit" class="submitBtn">{{ isEditMode ? 'Edit' : 'Add'}} Category</button>
                     </div>
                 </form>
             </div>
