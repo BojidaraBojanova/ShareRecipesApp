@@ -1,6 +1,7 @@
 const Admin = require('../models/Admin');
 const adminService = require('../services/adminService');
-const recipeService = require('../services/recipeService')
+const recipeService = require('../services/recipeService');
+const userService = require('../services/userService')
 
 const router = require('express').Router();
 
@@ -70,6 +71,16 @@ router.post('/addRecipe', async(req, res) => {
 
 })
 
+router.get('/users', async(req, res) => {
+    try {
+        const users = await userService.getAllUsers();
+        res.status(200).json(users);
+    } catch (error) {
+        console.error('Error in fetching the users', error);
+        res.status(500).json({ message: error.message })
+    }
+})
+
 router.get('/categories', async (req, res) => {
     try {
         const categories = await adminService.getAllCategories().lean();
@@ -112,6 +123,24 @@ router.delete('/deleteCategory/:categoryId', async(req, res) => {
     res.status(500).json({ message: error.message })
    }
 
+})
+
+router.delete('/deleteUser/:userId', async(req, res) => {
+    try {
+        const userId = req.params.userId;
+        const deletedUser = await adminService.deleteUser(userId);
+
+        if(deletedUser){
+            res.status(200).json(deletedUser);
+
+        }else{
+            res.status(404).json({ error: 'User not found' });
+        }
+
+    } catch (error) {
+        console.error('Error in deleting the user', error);
+        res.status(500).json({ message: error.message })
+    }
 })
 
 module.exports = router;

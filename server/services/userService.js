@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { SECRET_KEY } = require('../config');
 
+exports.getAllUsers = () => User.find();
+
 exports.getOne = (userId) => User.findById(userId);
 
 

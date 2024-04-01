@@ -4,7 +4,7 @@ export interface User {
     lastName: string,
     email: string,
     password: string,
-    favoriteRecipes: string[]
+    favoriteRecipe: string[]
 }
 
 export interface ProfileDetails{

@@ -7,6 +7,7 @@ import { AdminNavbarComponent } from './admin-home/admin-navbar/admin-navbar.com
 import { AdminMainComponent } from './admin-home/admin-main/admin-main.component';
 import { AdminAddEditCategoryComponent } from './admin-home/admin-add-edit-category/admin-add-edit-category.component';
 import { AdminAddEditRecipesComponent } from './admin-home/admin-add-edit-recipes/admin-add-edit-recipes.component';
+import { AdminUsersComponent } from './admin-home/admin-users/admin-users.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { AdminAddEditRecipesComponent } from './admin-home/admin-add-edit-recipe
         AdminMainComponent,
         AdminAddEditCategoryComponent,
         AdminAddEditRecipesComponent,
+        AdminUsersComponent,
     ],
     imports:[
         CommonModule,

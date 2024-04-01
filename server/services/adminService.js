@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { SECRET_KEY } = require('../config');
 const Category = require("../models/Category");
+const User = require("../models/User");
 
 
 exports.login = async(adminData) => {
@@ -49,6 +50,8 @@ exports.getAllCategories = () => Category.find();
 exports.editCategory = (categoryId, categoryData) => Category.findByIdAndUpdate(categoryId, categoryData, { runValidators: true });
 
 exports.deleteCategory = (categoryId) => Category.findByIdAndDelete(categoryId);
+
+exports.deleteUser = (userId) => User.findByIdAndDelete(userId);
 
 function generateToken(admin){
     const payload = {

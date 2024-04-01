@@ -6,25 +6,9 @@ import { AdminAddEditCategoryComponent } from './admin-home/admin-add-edit-categ
 import { AdminMainComponent } from './admin-home/admin-main/admin-main.component';
 import { InverseAuthGuard } from './guards/inverseAuth.guard';
 import { AdminAddEditRecipesComponent } from './admin-home/admin-add-edit-recipes/admin-add-edit-recipes.component';
+import { AdminUsersComponent } from './admin-home/admin-users/admin-users.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'admin',
-  //   canActivate: [AdminLoginGuard],
-  //   children: [
-  //     {
-  //       path: 'home',
-  //       component: AdminMainComponent,
-  //       canActivate: [AdminLoginGuard]
-  //     },
-  //     {
-  //       path: 'categories',
-  //       component: AdminAddEditCategoryComponent,
-        
-  //     },
-
-  //   ]
-  // },
   {
     path: 'home',
     component: AdminMainComponent,
@@ -38,6 +22,11 @@ const routes: Routes = [
   {
     path: 'recipes',
     component: AdminAddEditRecipesComponent,
+    canActivate: [AdminAuthGuard]
+  },
+  {
+    path: 'users',
+    component: AdminUsersComponent,
     canActivate: [AdminAuthGuard]
   },
   {

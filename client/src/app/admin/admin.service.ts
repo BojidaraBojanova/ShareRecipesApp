@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { Admin } from '../types/admin';
 import { Category } from '../types/category';
 import { Recipe } from '../types/recipe';
+import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,14 @@ export class AdminService {
     return result;
   }
 
+  getAllUsers(){
+    const result = this.http.get<User[]>('http://localhost:3000/admin/users', {})
+    .pipe(tap((users: User[]) => {
+      console.log('Users is get')
+    }));
+    return result;
+  }
+
   getAllCategories(){
     const result = this.http.get<Category[]>('http://localhost:3000/admin/categories', {})
     .pipe(tap((category: Category[]) => {
@@ -71,6 +80,15 @@ export class AdminService {
     const result = this.http.delete<Category>('http://localhost:3000/admin/deleteCategory/'+categoryId,{})
     .pipe(tap((category: Category) => {
       console.log('Category is deleted');
+    }))
+
+    return result;
+  }
+
+  deleteUser( userId: string ){
+    const result = this.http.delete<User>('http://localhost:3000/admin/deleteUser/'+userId, {})
+    .pipe(tap((user: User) => {
+      console.log('User is deleted')
     }))
 
     return result;
