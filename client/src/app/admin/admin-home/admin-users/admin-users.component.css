@@ -1,0 +1,88 @@
+.admin-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.viewUsers-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userTable-container-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.form-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: #388E3C;
+    font-family: 'CustomFont-Bold';
+    font-size: 2rem;
+}
+
+.userTable-wrapper{
+    width: 70%;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: center;
+}
+
+thead{
+    font-family: 'CustomFont-Bold';
+    background-color: #388E3C;
+    color: white;
+    height: 5vh;
+}
+
+tbody{
+    margin-top: 1rem;
+    font-family: 'CustomFont-MediumItalic';
+    background-color: #DDEEDF;
+    color: #388E3C;
+}
+
+tbody td{ 
+    padding: 1rem;
+}
+
+.table-btn{
+    width: 3vw;
+    height: 5.5vh;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+}
+
+.table-btn img{
+    width: 1.1vw;
+}
+
+.red{
+    background-color: #D21312;
+}
+
+.red:hover{
+    background-color: #ED2B2A;
+}

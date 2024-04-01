@@ -1,0 +1,40 @@
+<div class="admin-wrapper">
+    <app-admin-navbar />
+    <div class="viewUsers-wrapper">
+        <div class="userTable-container-wrapper">
+            <div class="form-title">
+                <h2>View Users</h2>
+            </div>
+            <div class="userTable-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>First Name</td>
+                            <td>Last Name</td>
+                            <td>Email</td>
+                            <td>Favorite Recipes:</td>
+                            <td>Delete</td>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="users.length > 0; else noUsers">
+                        <tr *ngFor="let user of users">
+                            <td>{{user.firstName}}</td>
+                            <td>{{user.lastName}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.favoriteRecipe.length}}</td>
+                            <td>
+                                <button class="table-btn red" (click)="deleteUser(user._id)">
+                                    <img src="../../../../assets/icons/delete-solid.svg" alt="">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <ng-template #noUsers>
+                    <p>No users available.</p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
