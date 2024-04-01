@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, map, tap } from 'rxjs';
 import { Admin } from '../types/admin';
 import { Category } from '../types/category';
 import { Recipe } from '../types/recipe';
@@ -68,12 +68,24 @@ export class AdminService {
     return result;
   }
 
+  getUserCount(): Observable<number>{
+    return this.getAllUsers().pipe(
+      map(users => users.length)
+    )
+  }
+
   getAllCategories(){
     const result = this.http.get<Category[]>('http://localhost:3000/admin/categories', {})
     .pipe(tap((category: Category[]) => {
         console.log('Categories is get')
       }))
     return result;
+  }
+
+  getCategoriesCount(): Observable<number>{
+    return this.getAllCategories().pipe(
+      map(categories => categories.length)
+    )
   }
 
   deleteCategory( categoryId: string ){

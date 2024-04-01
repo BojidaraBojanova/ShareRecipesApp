@@ -25,22 +25,9 @@
 .statistics-container{
     width: 100%;
     height: 80%;
-    padding: 3rem 2rem 0 2rem;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
+    padding: 5rem 2rem 0 2rem;
 }
 
-.stat-title{
-    width: 100%;
-    height: 10%;
-    color: #8BC34A;
-    font-family: 'CustomFont-Bold';
-    display: flex;
-    align-items: flex-end;
-    padding-left: 1rem;
-}
 
 .row{
     width: 100%;
@@ -53,8 +40,8 @@
 }
 
 .card{
-    width: 20%;
-    height: 50%;
+    width: 30%;
+    height: 70%;
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
@@ -70,7 +57,7 @@
 }
 
 .visual{
-    width: 40%;
+    width: 35%;
 }
 
 .details{
@@ -79,17 +66,18 @@
 }
 
 .number{
-    font-size: 2.5rem;
+    font-size: 4rem;
     color: white;
     font-family: 'CustomFont-MediumItalic';
-    padding: 0.3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .desc{
     color: white;
     font-family: 'CustomFont-MediumItalic';
-    padding: 0.3rem;
-
+    padding: 0 0.5rem 0.5rem 0.5rem;
 }
 
 .blue{

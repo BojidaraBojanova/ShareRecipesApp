@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Recipe } from '../types/recipe';
 
 @Injectable({
@@ -16,6 +16,12 @@ export class RecipeService {
       console.log('Recipes is get')
     }))
     return result;
+  }
+
+  getRecipesCount(): Observable<number>{
+    return this.getAllRecipes().pipe(
+      map(recipes => recipes.length)
+    )
   }
 
   getRecipesByCategory(categoryId: string): Observable<Recipe[]>{
