@@ -51,12 +51,59 @@ header{
     text-decoration: none;
 }
 
+.search-wrapper{
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.search-wrapper form{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.search-wrapper input{
+    font-family: 'CustomFont-Bold';
+    color: #388E3C;
+    font-size: 1rem;
+    border: 2px solid #388E3C;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+
+}
+
+input[type="search"]{
+    outline: 0;
+    width: 70%;
+    height: 5vh;
+    background: #F2F9F1;
+    padding: 0 1.6rem;
+}
+
+.search-wrapper button{
+    width: 4%;
+    height: 5vh;
+    background: none;
+    cursor: pointer;
+    border: none;
+}
+
+.search-wrapper button img{
+    width: 100%;
+    height: 100%;
+}
+
 .navbar{
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 35%;
     height: 100%;
-
 }
 
 .navbar ul{

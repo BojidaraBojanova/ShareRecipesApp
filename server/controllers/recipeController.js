@@ -88,4 +88,18 @@ router.get('/admin/recipes', async(req, res) => {
     }
 })
 
+router.get('/search', async(req, res) => {
+    const title = req.query.q;
+
+    console.log(title);
+
+    try {
+        const recipes = await recipeService.search(title);
+        res.status(200).json(recipes);
+    } catch (error) {
+        console.error('Error searching recipes', error);
+        res.status(500).json({ message: error.message });
+    }
+})
+
 module.exports = router;

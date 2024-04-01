@@ -9,6 +9,8 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class HeaderComponent {
 
+  searchQuery: string = '';
+
   constructor(private userService: UserService, private router: Router){}
 
   get isLoggedIn(): boolean{
@@ -21,6 +23,13 @@ export class HeaderComponent {
         this.router.navigate(['/users/login']);
       }
     })
+  }
+
+  search():void{
+    if(this.searchQuery.trim() !== ''){
+      this.router.navigate(['/search'], { queryParams: { q: this.searchQuery }});
+      this.searchQuery = '';
+    }
   }
 
 }

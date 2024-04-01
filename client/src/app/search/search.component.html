@@ -1,0 +1,25 @@
+<div class="loading" *ngIf="isLoading">
+    <app-loader />
+</div>
+<div class="search-results">
+    <h3>Search Results</h3>
+    <div class="cardWrapper" *ngIf="searchResults.length > 0; else noResults">       
+        <div class="recipeCard" *ngFor="let result of searchResults">
+            <a [routerLink]="'/category/recipe/details/'+result?._id">
+                <div class="recipeCard-img">
+                    <img src={{result.image}} alt="">
+                </div>
+                <div class="recipe-title">
+                    <h2>{{ result.title }}</h2>
+                </div>
+            </a>
+    
+        </div>
+    </div>
+    <ng-template #noResults>
+        <p class="noResults-p">No recipes available!</p>
+        <div class="img-wrapper">
+            <img src="../../../assets/images/noRecipes.png" alt="">
+        </div>
+    </ng-template>
+</div>

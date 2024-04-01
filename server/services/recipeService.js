@@ -12,7 +12,7 @@ exports.create = async(userId, recipeData) => {
         owner: userId
     });
 
-    return createdRecipe;
+    return createdRecipe; 
 };
 
 exports.editRecipe = async(recipeId, recipeData) => {
@@ -22,3 +22,13 @@ exports.editRecipe = async(recipeId, recipeData) => {
 }
 
 exports.deleteRecipe = (recipeId) => Recipe.findByIdAndDelete(recipeId);
+
+exports.search = (title) => {
+    let query = {};
+
+    if(title) {
+        query.title = new RegExp(title, 'i'); 
+    }
+
+    return Recipe.find(query);
+}

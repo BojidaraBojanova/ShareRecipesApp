@@ -12,6 +12,7 @@ import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppComponent,
     HomeComponent,
     NotFoundComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
