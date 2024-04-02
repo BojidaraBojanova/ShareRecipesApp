@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
--[Introduction](#introduction)
--[Features](#features)
--[Technologies Used](#technologies-used)
--[Installation](#installation)
--[Usage](#usage)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
 
 ## Introduction
 
@@ -40,7 +40,7 @@ To run this project locally, follow these steps:
      - start the frontend server
 6. Open your browser and navigate to `http://localhost:4200` to view the application.
 
-##Usage
+## Usage
 - Register a new account or log in if you already have one.
 - Explore recipes shared by other users.
 - Create your own recipes and share them.
