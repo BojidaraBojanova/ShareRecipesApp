@@ -15,7 +15,7 @@ Welcome to "Share Food"! This application allows users to share their favorite r
 ## Features
 
 - **User Authentication:** Users can sign up, log in, and manage their profiles.
-- **Recipe Managment:** Registered Users can create, edit, and delete their recipes. Not registered users can only view the recipes.
+- **Recipe Management:** Registered Users can create, edit, and delete their recipes. Not registered users can only view the recipes.
 - **Search Functionality:** Users can search for recipes based on the recipe title
 - **Responsive Design:** The application is optimized for various screen sizes, ensuring a seamless experience across devices.
 
