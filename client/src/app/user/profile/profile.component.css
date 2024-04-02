@@ -40,6 +40,7 @@
     margin-bottom: 3rem;
 }
 
+
 .container{
     width: 40%;
     height: 100%;
@@ -119,4 +120,5 @@
 .noRecipes{
     color: #388E3C;
     text-align: center;
+    font-size: 1.2rem;
 }

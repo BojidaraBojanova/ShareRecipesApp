@@ -3,7 +3,7 @@ aside {
     width: 20vw;
     height: 100%;
     padding-left: 1rem;
-    background: linear-gradient(30deg, #DDEEDF, #F2F9F1);
+    background: linear-gradient(30deg, #F2F9F1, #F2F9F1);
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-top-right-radius: 3rem;
     font-family: 'CustomFont-MediumItalic';

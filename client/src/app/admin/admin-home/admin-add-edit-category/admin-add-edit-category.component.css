@@ -1,6 +1,7 @@
 .admin-wrapper{
     display: flex;
     flex-direction: row;
+    margin-bottom: 6rem;
 }
 
 .addCategory-wrapper{
