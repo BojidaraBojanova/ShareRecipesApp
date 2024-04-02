@@ -7,6 +7,7 @@
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Admin Panel](#admin-panel)
 
 ## Introduction
 
@@ -17,6 +18,7 @@ Welcome to "Share Food"! This application allows users to share their favorite r
 - **User Authentication:** Users can sign up, log in, and manage their profiles.
 - **Recipe Management:** Registered Users can create, edit, and delete their recipes. Not registered users can only view the recipes.
 - **Search Functionality:** Users can search for recipes based on the recipe title
+- **Admin Panel:** Administrators have additional privileges to manage categories, recipes and users.
 - **Responsive Design:** The application is optimized for various screen sizes, ensuring a seamless experience across devices.
 
 ## Technologies Used
@@ -41,8 +43,15 @@ To run this project locally, follow these steps:
 6. Open your browser and navigate to `http://localhost:4200` to view the application.
 
 ## Usage
+
 - Register a new account or log in if you already have one.
 - Explore recipes shared by other users.
 - Create your own recipes and share them.
 - Edit or delete your recipes as needed.
 - Use the search functionality to find recipes.
+
+## Admin Panel
+
+- **Manage Categories:** Add, edit, and delete recipe categories.
+- **Manage Recipes:** Add, edit, and delete recipes.
+- **Manage Users:** View registered users and delete them if necessary.
