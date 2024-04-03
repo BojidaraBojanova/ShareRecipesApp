@@ -123,6 +123,12 @@
     font-size: 1.2rem;
 }
 
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media (max-width: 1300px){
 
     .btns{

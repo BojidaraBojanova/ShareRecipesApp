@@ -3,7 +3,6 @@ import { UserService } from '../user.service';
 import { ProfileDetails, User } from 'src/app/types/user';
 import { RecipeService } from 'src/app/recipes/recipe.service';
 import { Recipe } from 'src/app/types/recipe';
-import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +10,9 @@ import { switchMap } from 'rxjs';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit{
+
+  isLoading: boolean = false;
+
 
   profileDetails: ProfileDetails = {
     firstName: '',
@@ -42,7 +44,7 @@ export class ProfileComponent implements OnInit{
         if(storedUser){
           this.showProfileDetails(storedUser);
           this.getUserRecipes(storedUser._id);
-          this.getUserFavoriteRecipes(storedUser._id)
+          this.getUserFavoriteRecipes(storedUser._id);
         }else{
           this.profileDetails = {
             firstName: '',
@@ -62,7 +64,11 @@ export class ProfileComponent implements OnInit{
 
   getUserFavoriteRecipes(userId: string){
     this.userService.getFavoriteRecipes(userId).subscribe(recipes => {
-      return this.favoriteRecipe = recipes;
+      this.favoriteRecipe = recipes;
+      this.isLoading = false;
+    }, error => {
+      console.error("Error fetching favorite recipes:", error);
+      this.isLoading = false;
     })
   }
  
@@ -79,7 +85,6 @@ export class ProfileComponent implements OnInit{
     this.isEditRecipePopupVisible  = true;
     this.recipeId = recipeId;
     console.log(recipeId)
-    //this.editRecipeClicked.emit(recipeId);
     console.log(this.isEditRecipePopupVisible)
   }
 
@@ -102,10 +107,5 @@ export class ProfileComponent implements OnInit{
       });
     })
 
-    // return this.userService.removeFavoriteRecipeForAllUsers(recipeId).pipe(
-    //   switchMap(() => {
-    //     return this.recipeService.deleteRecipe(recipeId)
-    //   })
-    // )
   }
 }

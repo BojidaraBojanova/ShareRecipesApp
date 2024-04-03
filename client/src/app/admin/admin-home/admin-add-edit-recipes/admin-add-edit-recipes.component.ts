@@ -59,6 +59,7 @@ export class AdminAddEditRecipesComponent implements OnInit{
   }
 
   editRecipe(recipe: Recipe){
+    window.scrollTo(0, 0);
     this.form.patchValue({
       title: recipe.title,
       description: recipe.description,
@@ -73,6 +74,7 @@ export class AdminAddEditRecipesComponent implements OnInit{
   }
 
   deleteRecipe(recipeId: string){
+    window.scrollTo(0, 0);
     this.recipeService.deleteRecipe(recipeId).subscribe(() => {
       this.userService.removeFavoriteRecipeForAllUsers(recipeId).subscribe(() => {
         this.clearFormAndReload();

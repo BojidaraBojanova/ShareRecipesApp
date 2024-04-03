@@ -12,6 +12,9 @@
                 <h2>Liked recipes</h2>
             </div>
             <div class="container-list">
+                <div class="loading" *ngIf="isLoading">
+                    <app-loader />
+                </div>
                 <ol *ngIf="favoriteRecipe.length > 0; else noFavRecipes">
                     <li *ngFor="let recipe of favoriteRecipe">
                         <a [routerLink]="'/category/recipe/details/'+recipe?._id">{{recipe.title}}</a>

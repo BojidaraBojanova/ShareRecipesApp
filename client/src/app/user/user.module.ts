@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileEditPopupComponent } from './profile-edit-popup/profile-edit-popup.component';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeEditPopupComponent } from './recipe-edit-popup/recipe-edit-popup.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RecipeEditPopupComponent } from './recipe-edit-popup/recipe-edit-popup.
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class UserModule { }

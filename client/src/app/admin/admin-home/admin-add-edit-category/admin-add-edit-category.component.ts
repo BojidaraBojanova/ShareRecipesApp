@@ -29,6 +29,7 @@ export class AdminAddEditCategoryComponent implements OnInit{
   }
 
   editCategory(category: Category){
+    window.scrollTo(0, 0);
     this.form.patchValue({
       categoryName: category.categoryName,
       image: category.image
@@ -58,6 +59,7 @@ export class AdminAddEditCategoryComponent implements OnInit{
   }
 
   deleteCategory(categoryId: string) {
+    window.scrollTo(0, 0);
     this.adminService.deleteCategory(categoryId).subscribe(()=>{
       this.clearFormAndReload();
     })
