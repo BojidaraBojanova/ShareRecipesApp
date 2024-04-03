@@ -186,3 +186,64 @@ tbody td{
     text-align: center;
     margin-top: 0.5rem;
 } 
+
+
+@media (max-width: 1300px){
+    .admin-wrapper{
+        margin: 1rem 4rem 10rem 0rem;
+        
+    }
+    
+}
+
+@media (max-width: 1000px){
+    .form-title{
+        text-align: center;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 700px){
+
+    .addCategory-wrapper{
+        width: 90%;
+    }
+
+    .form-container-wrapper{
+        margin-top: 5rem;
+        width: 90%;
+    }
+
+    .categoryTable-wrapper{
+        width: 100%;
+        padding: 1rem;
+    }
+
+    table{
+        width: 100%;
+    }
+
+    thead{
+        font-size: 0.5rem;
+    }
+
+    tbody td{
+        font-size: 0.5rem;
+        padding: 0.2rem;
+    }
+
+    .img-wrapper{
+        width: 60px;
+        height: 40px;
+    }
+
+    .table-btn{
+        width: 1rem;
+        height: 1.2rem;
+        border-radius: 0.2rem;
+    }
+
+    .table-btn img{
+        width: 9px;
+    }
+}

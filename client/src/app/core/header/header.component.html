@@ -23,34 +23,38 @@
             </form>
         </div>
 
-        <div class="navbar">
+        <div class="menu-toggle" (click)="toggleMenu()">
+            <img src="../../../assets/icons/bars-solid.svg" alt="menu">
+        </div>
+
+        <div class="navbar" [ngClass]="{ 'menu-open': isMenuOpen }" (mouseleave)="closeMenu()">
             <ul *ngIf="!isLoggedIn">
                 <li>
-                    <a routerLink="/">Home</a>
+                    <a routerLink="/" (click)="closeMenu()">Home</a>
                 </li>
                 <li>
-                    <a routerLink="/category">Recipes</a>
+                    <a routerLink="/category" (click)="closeMenu()">Recipes</a>
                 </li>
                 <li>
-                    <a routerLink="/users/login">Login</a>
+                    <a routerLink="/users/login" (click)="closeMenu()">Login</a>
                 </li>
                 <li>
-                    <a routerLink="/users/register">Register</a>
+                    <a routerLink="/users/register" (click)="closeMenu()">Register</a>
                 </li>
             </ul>
 
             <ul *ngIf="isLoggedIn">
                 <li>
-                    <a routerLink="/">Home</a>
+                    <a routerLink="/" (click)="closeMenu()">Home</a>
                 </li>
                 <li>
-                    <a routerLink="/category">Recipes</a>
+                    <a routerLink="/category" (click)="closeMenu()">Recipes</a>
                 </li>
                 <li>
-                    <a routerLink="/users/addRecipe">Add Recipe</a>
+                    <a routerLink="/users/addRecipe" (click)="closeMenu()">Add Recipe</a>
                 </li>
                 <li>
-                    <a routerLink="/users/profile">Profile</a>
+                    <a routerLink="/users/profile" (click)="closeMenu()">Profile</a>
                 </li>
                 <li style="cursor: pointer;" (click)="logout()">
                     <a>Logout</a>

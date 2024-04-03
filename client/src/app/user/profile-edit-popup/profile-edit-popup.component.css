@@ -106,3 +106,16 @@
     text-align: center;
     margin-bottom: 0.5rem;
 }
+
+
+@media (max-width: 700px){
+    .form-wrapper input{
+        width: 50vw;
+        font-size: 0.8rem;        
+    }
+
+    .edit-btn{
+        width: 20vw;
+        height: 5vh;
+    }
+}

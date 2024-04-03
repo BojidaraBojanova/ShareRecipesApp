@@ -10,6 +10,7 @@ import { UserService } from 'src/app/user/user.service';
 export class HeaderComponent {
 
   searchQuery: string = '';
+  isMenuOpen: boolean = false;
 
   constructor(private userService: UserService, private router: Router){}
 
@@ -30,6 +31,14 @@ export class HeaderComponent {
       this.router.navigate(['/search'], { queryParams: { q: this.searchQuery }});
       this.searchQuery = '';
     }
+  }
+
+  toggleMenu(){
+    this.isMenuOpen = !this.isMenuOpen
+  }
+
+  closeMenu(){
+    this.isMenuOpen = false;
   }
 
 }

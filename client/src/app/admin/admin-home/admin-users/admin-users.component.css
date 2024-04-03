@@ -87,3 +87,58 @@ tbody td{
 .red:hover{
     background-color: #ED2B2A;
 }
+
+@media (max-width: 1300px){
+   
+    .admin-wrapper{
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 10rem;
+    }
+
+    thead{
+        font-size: 0.5rem;
+    }
+
+    tbody td{
+        font-size: 0.5rem;
+        padding: 0.2rem;
+    }
+
+    .img-wrapper{
+        width: 60px;
+        height: 40px;
+    }
+
+    .table-btn{
+        width: 1rem;
+        height: 1.2rem;
+        border-radius: 0.2rem;
+    }
+
+    .table-btn img{
+        width: 9px;
+    }
+}
+
+
+@media (max-width: 700px){
+
+    .form-title{
+        text-align: center;
+    }
+
+    .userTable-wrapper{
+        width: 80vw;
+        max-width: 100%;
+        overflow-x: auto;
+        padding: 1rem;
+    }
+
+    tbody td{
+        font-size: 0.4rem;
+        padding: 0.2rem;
+    }
+
+   
+}

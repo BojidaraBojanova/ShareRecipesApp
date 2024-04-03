@@ -122,3 +122,41 @@
     text-align: center;
     margin-top: 0.5rem;
 } 
+
+@media (max-width: 1300px){
+    .logo-wrap{
+        width: 30%;
+        height: 6vh;
+    }
+
+}
+  
+
+@media (max-width: 1000px){
+    .logo-wrap{
+        width: 30%;
+        height: 4vh;
+    }
+
+}
+  
+@media (max-width: 800px){
+
+    .logo-text p{
+        font-size: 0.9rem;
+    }
+    .logo-wrap{
+        width: 30%;
+        height: 4vh;
+    }
+    .title{
+        text-align: center;
+        margin: 0.5rem;
+        font-size: 1.8rem;
+    }
+
+    .adminFormWrapper{
+        width: 80%;
+        font-size: 1rem;
+    }
+}

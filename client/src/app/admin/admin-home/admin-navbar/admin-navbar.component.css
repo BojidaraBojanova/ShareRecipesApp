@@ -60,3 +60,46 @@ aside a:hover{
     color: #388E3C;
     font-family: 'CustomFont-Bold';
 }
+
+.menu-toggle{
+    display: none;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 1rem;
+}
+
+.menu-toggle img{
+    width: 2rem;
+    height: auto;
+}
+
+@media (max-width: 1300px){
+
+    .logo{
+        font-size: 1.5rem;
+    }
+
+    
+    .menu-toggle{
+        display: block;
+        z-index: 1000;
+    }
+
+    aside{
+        display: none;
+    }
+
+    aside.menu-open{
+        display: block;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        width: 40vh;
+        height: 100%;
+        position: absolute;
+        z-index: 100;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        border-radius: 1rem;
+    }
+
+}

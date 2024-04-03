@@ -39,7 +39,7 @@
                         <option value="" disabled selected>Select a category</option>
                         <option *ngFor="let category of categories" [value]="category._id">{{category.categoryName}}</option>
                     </select>
-                    <div *ngIf="form.get('category')?.invalid && form.get('category')?.touched" class="error-msg">Please select a category</div>
+                    <div *ngIf="form.get('category')?.invalid && form.get('category')?.touched" class="error">Please select a category</div>
                 </div>
 
                 <label for="image">Image</label>

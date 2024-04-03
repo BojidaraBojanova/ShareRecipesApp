@@ -8,8 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-navbar.component.css']
 })
 export class AdminNavbarComponent {
+  isMenuOpen: boolean = false;
+
 
   constructor(private adminService: AdminService, private router: Router){}
+
+  toggleMenu(){
+    this.isMenuOpen = !this.isMenuOpen
+    console.log(this.isMenuOpen)
+  }
+
+  closeMenu(){
+    this.isMenuOpen = false;
+  }
 
   logout():void{
     this.adminService.logout().subscribe({

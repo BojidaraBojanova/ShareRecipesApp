@@ -122,3 +122,54 @@
     text-align: center;
     font-size: 1.2rem;
 }
+
+@media (max-width: 1300px){
+
+    .btns{
+        width: 20%;
+    }
+
+}
+
+@media (max-width: 1000px){
+    .btns{
+        width: 25%;
+    }
+}
+
+@media (max-width: 700px){
+    .title{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .edit-btn{
+        width: 15%;
+        height: 20%;
+        margin-bottom: 3rem;
+        margin-right: 0.5rem;
+    }
+    
+    .edit-btn img{
+        width: 65%;
+        height: 85%;
+    }
+
+    .tables-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container{
+        width: 80%;
+        margin-bottom: 2rem;
+        
+    }
+
+    .btns{
+        width: 30%;
+    }
+
+}

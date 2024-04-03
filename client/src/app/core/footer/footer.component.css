@@ -22,20 +22,13 @@ footer{
   font-weight: 500;
   margin: 0 1rem 0 1rem;
 }
-/* 
-footer{
-  background-color: #333;
-  color:  white;
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-}
 
-footer a,
-footer p{
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-} */
+@media (max-width: 1300px){
+  .copy-right-sec{
+    display: flex;
+    flex-direction: column;
+  }
+  .copy-right-sec a{
+    margin: 0.2rem;
+  }
+}

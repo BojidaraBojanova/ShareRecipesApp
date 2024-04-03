@@ -1,4 +1,7 @@
-<aside>
+<div class="menu-toggle" (click)="toggleMenu()">
+    <img src="../../../assets/icons/bars-solid.svg" alt="menu">
+</div>
+<aside [ngClass]="{ 'menu-open': isMenuOpen }" (mouseleave)="closeMenu()">
     <div class="logo-wrapper">
         <div class="logo-img">
             <img src="../../../assets/images/logo3.png" alt="">
