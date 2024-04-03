@@ -131,6 +131,22 @@ exports.removeFavoriteRecipe = async(userId, recipeId) => {
     }
 }
 
+exports.removeFavoriteRecipeForAllUsers = async(recipeId) => {
+    try {
+        const users = await User.find({ favoriteRecipe: recipeId });
+
+        await Promise.all(users.map(async user => {
+            user.favoriteRecipe = user.favoriteRecipe.filter(id => id.toString() !== recipeId);
+            await user.save();
+        }))
+
+        return{ success: true };
+    } catch (error) {
+        console.error('Error removing recipe from favorites of all users:', error);
+        return { success:false };
+    }
+}
+
 function generateToken(user){
     const payload = {
         _id: user._id,

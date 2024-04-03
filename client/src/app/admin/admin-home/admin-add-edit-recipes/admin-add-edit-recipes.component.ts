@@ -4,6 +4,7 @@ import { Recipe } from 'src/app/types/recipe';
 import { AdminService } from '../../admin.service';
 import { Category } from 'src/app/types/category';
 import { RecipeService } from 'src/app/recipes/recipe.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-admin-add-edit-recipes',
@@ -28,7 +29,7 @@ export class AdminAddEditRecipesComponent implements OnInit{
     image: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder, private adminService: AdminService, private recipeService: RecipeService){}
+  constructor(private fb: FormBuilder, private adminService: AdminService, private recipeService: RecipeService, private userService: UserService){}
 
   ngOnInit(): void {
       this.loadCategories();
@@ -73,7 +74,9 @@ export class AdminAddEditRecipesComponent implements OnInit{
 
   deleteRecipe(recipeId: string){
     this.recipeService.deleteRecipe(recipeId).subscribe(() => {
-      this.clearFormAndReload();
+      this.userService.removeFavoriteRecipeForAllUsers(recipeId).subscribe(() => {
+        this.clearFormAndReload();
+      });
     })
   }
 

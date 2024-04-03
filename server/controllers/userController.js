@@ -3,6 +3,7 @@ const router = require('express').Router();
 const userService = require('../services/userService');
 const recipeService = require('../services/recipeService');
 const Recipe = require('../models/Recipe');
+const User = require('../models/User');
 
 router.post('/register', async(req, res) => {
     
@@ -106,6 +107,21 @@ router.delete('/:userId/favorite/:recipeId', async( req, res) => {
     } catch (error) {
         console.error('Error delete recipe from favorite', error);
         res.status(500).json({ message: error.message });
+    }
+})
+
+router.delete('/favorite/:recipeId', async(req, res) => {
+    const recipeId = req.params.recipeId;
+
+    console.log('RecipeId:',recipeId)
+
+    try {
+        const change = userService.removeFavoriteRecipeForAllUsers(recipeId);
+        console.log('Here:', change);
+        res.status(200).json({ message: 'Recipe removed from favorites of all users' })
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: error.message })
     }
 })
 

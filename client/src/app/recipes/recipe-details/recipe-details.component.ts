@@ -31,26 +31,17 @@ export class RecipeDetailsComponent implements OnInit {
         }
       })
 
-
-    // this.userService.getProfile().subscribe(user => {
-    //   this.userId = user._id;
-    //   this.favorites = user.favoriteRecipes;
-    //   this.isFavorite = this.favorites.includes(this.recipe?._id ?? '')
-    // });
   }
 
   getUserId(){
     const user = this.userService.getUser();
     if(user){
       this.userId = user._id;
-      console.log('UserId:',this.userId)
       
       this.userService.getFavoriteRecipes(this.userId).subscribe(favorites => {
         this.favorites = favorites.map(recipe => recipe._id);
-        console.log('RecipeId:',this.recipe?._id)
-        console.log('FavoritesRecipes:', this.favorites)
+
         this.isFavorite = this.favorites.includes(this.recipe?._id ?? '');
-        console.log('is favorite:', this.isFavorite)
       })
     }
   }
@@ -66,6 +57,5 @@ export class RecipeDetailsComponent implements OnInit {
         })
       }
     }
-    // this.isFavorite = !this.isFavorite;
 }
 

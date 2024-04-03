@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { ProfileDetails, User } from 'src/app/types/user';
 import { RecipeService } from 'src/app/recipes/recipe.service';
 import { Recipe } from 'src/app/types/recipe';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -96,7 +97,15 @@ export class ProfileComponent implements OnInit{
 
   deleteRecipe(recipeId: string){
     this.recipeService.deleteRecipe(recipeId).subscribe(()=>{
-      window.location.reload();
+      this.userService.removeFavoriteRecipeForAllUsers(recipeId).subscribe(() => {
+        window.location.reload();
+      });
     })
+
+    // return this.userService.removeFavoriteRecipeForAllUsers(recipeId).pipe(
+    //   switchMap(() => {
+    //     return this.recipeService.deleteRecipe(recipeId)
+    //   })
+    // )
   }
 }

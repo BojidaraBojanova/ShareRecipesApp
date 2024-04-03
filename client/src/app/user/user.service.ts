@@ -98,6 +98,10 @@ export class UserService implements OnDestroy{
     return this.http.delete<User>('http://localhost:3000/users/' + userId + '/favorite/' + recipeId);
   }
 
+  removeFavoriteRecipeForAllUsers(recipeId: string): Observable<void>{
+    return this.http.delete<void>('http://localhost:3000/users/favorite/' + recipeId);
+  }
+
   getFavoriteRecipes(userId: string){
     return this.http.get<Recipe[]>('http://localhost:3000/users/favorite-recipes/' + userId);
   }
