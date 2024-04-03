@@ -116,8 +116,7 @@ router.delete('/favorite/:recipeId', async(req, res) => {
     console.log('RecipeId:',recipeId)
 
     try {
-        const change = userService.removeFavoriteRecipeForAllUsers(recipeId);
-        console.log('Here:', change);
+        userService.removeFavoriteRecipeForAllUsers(recipeId);
         res.status(200).json({ message: 'Recipe removed from favorites of all users' })
     } catch (error) {
         console.error(error);
